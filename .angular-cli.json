@@ -19,9 +19,24 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/ionicons/dist/css/ionicons.min.css",
+        "../node_modules/jvectormap/jquery-jvectormap.css",
+        "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
+        "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/fastclick/lib/fastclick.js",
+        "../node_modules/admin-lte/dist/js/adminlte.min.js",
+        "../node_modules/jquery-sparkline/jquery.sparkline.min.js",
+        "../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
+        "../node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
+        "../node_modules/chart.js/Chart.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
