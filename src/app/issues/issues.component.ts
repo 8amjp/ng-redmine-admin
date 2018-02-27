@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService }     from '../api.service';
 
 @Component({
-  selector: 'app-issues',
-  templateUrl: './issues.component.html',
-  styleUrls: ['./issues.component.css']
+  templateUrl: './issues.component.html'
 })
 export class IssuesComponent implements OnInit {
+  issues;
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.api.getIssues().subscribe(
+      data => {
+        this.issues = data
+      },
+      error => console.log(error),
+      () => console.log('onCompleted')
+    );
   }
 
 }

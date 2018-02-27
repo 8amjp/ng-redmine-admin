@@ -1,3 +1,6 @@
-<p>
-  issues works!
-</p>
+<h1>チケット一覧</h1>
+<ul *ngIf="issues">
+  <li *ngFor="let issue of issues.issues">
+    <span>{{issue.id}}</span> <span>{{issue.subject}}</span>
+  </li>
+</ul>
