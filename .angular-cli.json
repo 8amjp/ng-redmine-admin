@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ng-redmine"
+    "name": "ng-redmine-admin"
   },
   "apps": [
     {
@@ -22,6 +22,12 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/ionicons/dist/css/ionicons.min.css",
+        "../node_modules/bootstrap-daterangepicker/daterangepicker.css",
+        "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
+        "../node_modules/admin-lte/plugins/iCheck/all.css",
+        "../node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css",
+        "../node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css",
+        "../node_modules/select2/dist/css/select2.min.css",
         "../node_modules/jvectormap/jquery-jvectormap.css",
         "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
         "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
@@ -30,6 +36,16 @@
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/select2/dist/js/select2.full.min.js",
+        "../node_modules/admin-lte/plugins/input-mask/jquery.inputmask.js",
+        "../node_modules/admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js",
+        "../node_modules/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js",
+        "../node_modules/moment/min/moment.min.js",
+        "../node_modules/bootstrap-daterangepicker/daterangepicker.js",
+        "../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+        "../node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js",
+        "../node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js",
+        "../node_modules/admin-lte/plugins/iCheck/icheck.min.js",
         "../node_modules/fastclick/lib/fastclick.js",
         "../node_modules/admin-lte/dist/js/adminlte.min.js",
         "../node_modules/jquery-sparkline/jquery.sparkline.min.js",
@@ -40,7 +56,8 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "local": "environments/environment.local.ts"
       }
     }
   ],

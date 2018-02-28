@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  redmine_protocol: "http",
+  redmine_host_name: "localhost/redmine",
+  redmine_api_format: ".json",
+  redmine_api_key: "0000000000000000000000000000000000000000"
 };

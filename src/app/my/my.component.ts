@@ -1,15 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService }     from '../api.service';
 
 @Component({
-  selector: 'app-my',
-  templateUrl: './my.component.html',
-  styleUrls: ['./my.component.css']
+  templateUrl: './my.component.html'
 })
 export class MyComponent implements OnInit {
 
-  constructor() { }
+  title = 'マイページ';
+  issuesassignedtome;
+  issuesreportedbyme;
 
-  ngOnInit() {
+  constructor(private api: ApiService) { }
+
+  ngOnInit(): void {
+    this.api.get('/issues', 'assigned_to_id=me').subscribe(
+      data => {
+        this.issuesassignedtome = data
+      },
+      error => console.log(error),
+      () => console.log('onCompleted')
+    );
+    this.api.get('/issues', 'author_id=me').subscribe(
+      data => {
+        this.issuesreportedbyme = data
+      },
+      error => console.log(error),
+      () => console.log('onCompleted')
+    );
   }
 
 }

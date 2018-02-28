@@ -1,0 +1,34 @@
+<div *ngIf="issues; else loading" class="box-body">
+  <table *ngIf="issues.issues.length > 0; else empty" class="table table-condensed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>プロジェクト</th>
+        <th>トラッカー</th>
+        <th>ステータス</th>
+        <th>題名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let issue of issues.issues">
+        <td><a [routerLink]="['/issues', issue.id]">{{issue.id}}</a></td>
+        <td>{{issue.project.name}}</td>
+        <td>{{issue.tracker.name}}</td>
+        <td>{{issue.status.name}}</td>
+        <td><a [routerLink]="['/issues', issue.id]">{{issue.subject}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loading>
+  <div class="overlay">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</ng-template>
+
+<ng-template #empty>
+  <div class="callout callout-warning">
+    <p>表示するデータがありません</p>
+  </div>
+</ng-template>

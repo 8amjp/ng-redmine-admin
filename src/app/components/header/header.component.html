@@ -1,7 +1,12 @@
 <header class="main-header">
-  <a href="../../index2.html" class="logo">
-    <span class="logo-mini">ngr</span>
-    <span class="logo-lg">ng-redmine</span>
+  <a href="/" class="logo">
+    <span class="logo-mini">
+      <i class="fa fa-ticket"></i>
+    </span>
+    <span class="logo-lg">
+      <i class="fa fa-ticket"></i>
+      NgRedmineAdmin
+    </span>
   </a>
   <nav class="navbar navbar-static-top">
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -13,69 +18,25 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li class="dropdown messages-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-envelope-o"></i>
-            <span class="label label-success">4</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="header">You have 4 messages</li>
-            <li>
-              <ul class="menu">
-                <li>
-                  <a href="#">
-                    <div class="pull-left">
-                      <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <h4>
-                      Support Team
-                      <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                    </h4>
-                    <p>Why not buy a new awesome theme?</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="footer"><a href="#">See All Messages</a></li>
-          </ul>
-        </li>
-        <li class="dropdown notifications-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
-            <li>
-              <ul class="menu">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="footer"><a href="#">View all</a></li>
-          </ul>
-        </li>
         <li class="dropdown tasks-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
+            <i class="fa fa-ticket"></i>
+            <span class="label label-danger" *ngIf="issuesassignedtome">{{ issuesassignedtome.total_count }}</span>
           </a>
-          <ul class="dropdown-menu">
-            <li class="header">You have 9 tasks</li>
+          <ul class="dropdown-menu" *ngIf="issuesassignedtome">
+            <li class="header">担当しているチケット({{ issuesassignedtome.total_count }})</li>
             <li>
               <ul class="menu">
-                <li>
+                <li *ngFor="let issue of issuesassignedtome.issues">
                   <a href="#">
                     <h3>
-                      Design some buttons
-                      <small class="pull-right">20%</small>
+                      {{issue.subject}}
+                      <small class="pull-right">{{issue.done_ratio}}%</small>
                     </h3>
                     <div class="progress xs">
-                      <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                        <span class="sr-only">20% Complete</span>
+                      <div class="progress-bar progress-bar-aqua" style="width: {{issue.done_ratio}}%" role="progressbar"
+                        attr.aria-valuenow="{{issue.done_ratio}}" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only">{{issue.done_ratio}}% Complete</span>
                       </div>
                     </div>
                   </a>
@@ -83,7 +44,7 @@
               </ul>
             </li>
             <li class="footer">
-              <a href="#">View all tasks</a>
+              <a [routerLink]="['/my']">マイページへ</a>
             </li>
           </ul>
         </li>

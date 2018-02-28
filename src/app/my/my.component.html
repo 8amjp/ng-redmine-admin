@@ -1,3 +1,35 @@
-<p>
-  my works!
-</p>
+<section class="content-header">
+  <h1>{{ title }}</h1>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            担当しているチケット
+            <span class="label label-danger" *ngIf="issuesassignedtome">{{ issuesassignedtome.total_count }}</span>
+          </h3>
+        </div>
+        <app-my-issues [issues]="issuesassignedtome"></app-my-issues>
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">
+            報告したチケット
+            <span class="label label-primary" *ngIf="issuesreportedbyme">{{ issuesreportedbyme.total_count }}</span>
+          </h3>
+        </div>
+        <app-my-issues [issues]="issuesreportedbyme"></app-my-issues>
+      </div>
+
+    </div>
+  </div>
+</section>

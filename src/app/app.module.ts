@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,8 +15,10 @@ import { MyComponent } from './my/my.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { ApiService } from './api.service';
+import { IssueFormComponent } from './issues/issue-form/issue-form.component';
+import { MyIssuesComponent } from './my/my-issues/my-issues.component';
 
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,14 @@ import { ApiService } from './api.service';
     NewsComponent,
     MyComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    IssueFormComponent,
+    MyIssuesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
   ],
   providers: [

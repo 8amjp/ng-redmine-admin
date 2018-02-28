@@ -5,12 +5,14 @@ import { ApiService }     from '../api.service';
   templateUrl: './issues.component.html'
 })
 export class IssuesComponent implements OnInit {
+
+  title = 'チケット';
   issues;
 
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.getIssues().subscribe(
+    this.api.get('/issues').subscribe(
       data => {
         this.issues = data
       },

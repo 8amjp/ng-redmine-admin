@@ -1,3 +1,11 @@
-<p>
-  projects works!
-</p>
+<section class="content-header">
+  <h1>{{ title }}</h1>
+</section>
+<section class="content">
+  <ul *ngIf="projects">
+    <li *ngFor="let project of projects.projects">
+      <h3>{{project.name}}</h3>
+      <p>{{project.description}}</p>
+    </li>
+  </ul>
+</section>
