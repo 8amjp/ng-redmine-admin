@@ -3,8 +3,8 @@
 </section>
 <section class="content">
   <div class="box box-primary">
-    <div class="box-body">
-      <table *ngIf="issues; else loading" class="table table-condensed">
+    <div class="box-body" *ngIf="issues; else loading">
+      <table *ngIf="issues.issues.length > 0; else empty" class="table table-condensed">
         <thead>
           <tr>
             <th>#</th>
@@ -19,21 +19,27 @@
         <tbody>
           <tr *ngFor="let issue of issues.issues">
             <td><a [routerLink]="['/issues', issue.id]">{{issue.id}}</a></td>
-            <td>{{issue.tracker.name}}</td>
-            <td>{{issue.status.name}}</td>
-            <td>{{issue.priority.name}}</td>
+            <td>{{issue.tracker?.name}}</td>
+            <td>{{issue.status?.name}}</td>
+            <td>{{issue.priority?.name}}</td>
             <td><a [routerLink]="['/issues', issue.id]">{{issue.subject}}</a></td>
-            <td>{{issue.assigned_to.name}}</td>
+            <td>{{issue.assigned_to?.name}}</td>
             <td>{{issue.updated_on | date:"yyyy/MM/dd"}}</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <ng-template #loading>
+      <div class="overlay">
+        <i class="fa fa-refresh fa-spin"></i>
+      </div>
+    </ng-template>
+
+    <ng-template #empty>
+      <div class="callout callout-warning">
+        <p>表示するデータがありません</p>
+      </div>
+    </ng-template>
   </div>
 </section>
 
-<ng-template #loading>
-  <div class="overlay">
-    <i class="fa fa-refresh fa-spin"></i>
-  </div>
-</ng-template>

@@ -12,9 +12,10 @@ import { IssuesComponent } from './issues/issues.component';
 import { TimeEntriesComponent } from './time-entries/time-entries.component';
 import { NewsComponent } from './news/news.component';
 import { MyComponent } from './my/my.component';
+import { LoginComponent } from './login/login.component';
+
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
 import { IssueFormComponent } from './issues/issue-form/issue-form.component';
 import { MyIssuesComponent } from './my/my-issues/my-issues.component';
 
@@ -29,10 +30,11 @@ import { ApiService } from './api.service';
     TimeEntriesComponent,
     NewsComponent,
     MyComponent,
+    LoginComponent,
     HeaderComponent,
     SidebarComponent,
     IssueFormComponent,
-    MyIssuesComponent
+    MyIssuesComponent,
   ],
   imports: [
     BrowserModule,

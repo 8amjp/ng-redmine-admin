@@ -6,8 +6,8 @@
     <div class="box-header with-border">
       <h3 class="box-title">form</h3>
     </div>
-    <form role="form" *ngIf="issue; else loading">
-      <div class="box-body">
+    <div class="box-body">
+      <form role="form" *ngIf="issue; else loading">
 
         <div class="row">
           <div class="col-md-9">
@@ -125,13 +125,14 @@
           <input type="file" name="attachments[dummy][file]" class="file_selector filedrop" multiple="multiple">
         </div>
 
+      </form>
+    </div>
+
+    <ng-template #loading>
+      <div class="overlay">
+        <i class="fa fa-refresh fa-spin"></i>
       </div>
-    </form>
+    </ng-template>
   </div>
 </section>
 
-<ng-template #loading>
-  <div class="overlay">
-    <i class="fa fa-refresh fa-spin"></i>
-  </div>
-</ng-template>

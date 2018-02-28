@@ -1,4 +1,4 @@
-<div *ngIf="issues; else loading" class="box-body">
+<div class="box-body" *ngIf="issues; else loading">
   <table *ngIf="issues.issues.length > 0; else empty" class="table table-condensed">
     <thead>
       <tr>

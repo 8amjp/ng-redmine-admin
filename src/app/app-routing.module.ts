@@ -7,6 +7,7 @@ import { IssuesComponent } from './issues/issues.component';
 import { TimeEntriesComponent } from './time-entries/time-entries.component';
 import { NewsComponent } from './news/news.component';
 import { MyComponent } from './my/my.component';
+import { LoginComponent } from './login/login.component';
 import { IssueFormComponent } from './issues/issue-form/issue-form.component';
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'issues/:id', component: IssueFormComponent },
   { path: 'time-entries', component: TimeEntriesComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'my', component: MyComponent }
+  { path: 'my', component: MyComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
