@@ -28,7 +28,7 @@
             <li>
               <ul class="menu">
                 <li *ngFor="let issue of issuesassignedtome.issues">
-                  <a href="#">
+                  <a [routerLink]="['/issues', issue.id]">
                     <h3>
                       {{issue.subject}}
                       <small class="pull-right">{{issue.done_ratio}}%</small>

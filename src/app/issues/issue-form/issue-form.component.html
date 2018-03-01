@@ -7,20 +7,22 @@
       <h3 class="box-title">form</h3>
     </div>
     <div class="box-body">
-      <form role="form" (ngSubmit)="onSubmit()" *ngIf="formdata; else loading">
+      <form role="form" (ngSubmit)="onSubmit()" *ngIf="issue; else loading">
 
         <div class="row">
           <div class="col-md-9">
 
             <div class="form-group">
               <label for="issue_project_id">プロジェクト</label>
-              <select [(ngModel)]="formdata.issue.project_id" name="issue[project_id]" id="issue_project_id" class="form-control input-sm">
+              <select [(ngModel)]="issue.project_id" name="issue[project_id]" id="issue_project_id" class="form-control input-sm">
+                <option *ngFor="let item of options.projects" [value]="item.id">{{item.name}}</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="issue_tracker_id">トラッカー</label>
-              <select [(ngModel)]="formdata.issue.tracker_id" name="issue[tracker_id]" id="issue_tracker_id" class="form-control input-sm">
+              <select [(ngModel)]="issue.tracker_id" name="issue[tracker_id]" id="issue_tracker_id" class="form-control input-sm">
+                <option *ngFor="let item of options.trackers" [value]="item.id">{{item.name}}</option>
               </select>
             </div>
 
@@ -29,7 +31,7 @@
 
             <div class="checkbox" id="issue_is_private_wrap">
               <input type="hidden" value="0" name="issue[is_private]">
-              <input type="checkbox" value="1" name="issue[is_private]" id="issue_is_private">
+              <input type="checkbox" value="1" [(ngModel)]="issue.is_private" name="issue[is_private]" id="issue_is_private">
               <label class="inline" for="issue_is_private" id="issue_is_private_label">プライベート</label>
             </div>
 
@@ -38,82 +40,72 @@
 
         <div class="form-group">
           <label for="issue_subject">題名</label>
-          <input type="text" [(ngModel)]="formdata.issue.subject" name="issue[subject]" id="issue_subject" class="form-control input-sm">
+          <input type="text" [(ngModel)]="issue.subject" name="issue[subject]" id="issue_subject" class="form-control input-sm">
         </div>
 
         <div class="form-group">
           <label for="issue_description">説明</label>
-          <textarea [(ngModel)]="formdata.issue.description" name="issue[description]" id="issue_description" class="form-control"></textarea>
+          <textarea [(ngModel)]="issue.description" name="issue[description]" id="issue_description" class="form-control"></textarea>
         </div>
 
         <hr>
 
         <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="issue_status_id">ステータス</label>
-              <select [(ngModel)]="formdata.issue.status_id" name="issue[status_id]" id="issue_status_id" class="form-control input-sm">
-              </select>
-            </div>
+          <div class="form-group col-md-3">
+            <label for="issue_status_id">ステータス</label>
+            <select [(ngModel)]="issue.status_id" name="issue[status_id]" id="issue_status_id" class="form-control input-sm">
+              <option *ngFor="let item of options.issue_statuses" [value]="item.id">{{item.name}}</option>
+            </select>
           </div>
 
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="issue_priority_id">優先度</label>
-              <select [(ngModel)]="formdata.issue.priority_id" name="issue[priority_id]" id="issue_priority_id" class="form-control input-sm">
-              </select>
-            </div>
+          <div class="form-group col-md-3">
+            <label for="issue_priority_id">優先度</label>
+            <select [(ngModel)]="issue.priority_id" name="issue[priority_id]" id="issue_priority_id" class="form-control input-sm">
+              <option *ngFor="let item of options.issue_priorities" [value]="item.id">{{item.name}}</option>
+            </select>
           </div>
 
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="issue_assigned_to_id">担当者</label>
-              <select [(ngModel)]="formdata.issue.assigned_to_id" name="issue[assigned_to_id]" id="issue_assigned_to_id" class="form-control input-sm">
-              </select>
-            </div>
+          <div class="form-group col-md-3">
+            <label for="issue_assigned_to_id">担当者</label>
+            <select [(ngModel)]="issue.assigned_to_id" name="issue[assigned_to_id]" id="issue_assigned_to_id" class="form-control input-sm">
+            </select>
           </div>
 
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="issue_category_id">カテゴリ</label>
-              <select [(ngModel)]="formdata.issue.category_id" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
-              </select>
-            </div>
+          <div class="form-group col-md-3">
+            <label for="issue_category_id">カテゴリ</label>
+            <select [(ngModel)]="issue.category_id" [disabled]="options.issue_categories" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
+              <option *ngFor="let item of options.issue_categories" [value]="item.id">{{item.name}}</option>
+            </select>
           </div>
 
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="issue_fixed_version_id">対象バージョン</label>
-              <select [(ngModel)]="formdata.issue.fixed_version_id" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
-              </select>
-            </div>
+          <div class="form-group col-md-3">
+            <label for="issue_fixed_version_id">対象バージョン</label>
+            <select [(ngModel)]="issue.fixed_version_id" [disabled]="options.versions" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
+              <option *ngFor="let item of options.versions" [value]="item.id">{{item.name}}</option>
+            </select>
           </div>
         </div>
 
         <hr>
 
         <div class="row">
-          <div class="col-md-3">
-            <div class="form-group" id="start_date_area">
-              <label for="issue_start_date">開始日</label>
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" [(ngModel)]="formdata.issue.start_date" name="issue[start_date]" id="issue_start_date" class="form-control input-sm pull-right">
+          <div class="form-group col-md-3" id="start_date_area">
+            <label for="issue_start_date">開始日</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
               </div>
+              <input type="text" [(ngModel)]="issue.start_date" name="issue[start_date]" id="issue_start_date" class="form-control input-sm pull-right">
             </div>
           </div>
           
-          <div class="col-md-3">
-            <div class="form-group" id="due_date_area">
-              <label for="issue_due_date">期日</label>
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" [(ngModel)]="formdata.issue.due_date" name="issue[due_date]" id="issue_due_date" class="form-control input-sm pull-right">
+          <div class="form-group col-md-3" id="due_date_area">
+            <label for="issue_due_date">期日</label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
               </div>
+              <input type="text" [(ngModel)]="issue.due_date" name="issue[due_date]" id="issue_due_date" class="form-control input-sm pull-right">
             </div>
           </div>
         </div>
@@ -138,5 +130,31 @@
       </div>
     </ng-template>
   </div>
+  
+  <div class="box box-primary" *ngIf="gotIssue">
+    <div class="box-header with-border">
+      <h3 class="box-title">履歴</h3>
+    </div>
+    <div class="box-body">
+      <ul class="timeline">
+        <li *ngFor="let journal of gotIssue.journals">
+          <i class="fa fa-edit bg-blue"></i>
+          <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i>{{journal.created_on}}</span>
+            <h3 class="timeline-header">
+              <a href="#">#{{journal.id}}</a> {{journal.user.name}}
+            </h3>
+            <div class="timeline-body">
+              <p *ngFor="let detail of journal.details">
+                {{detail.name}}: {{detail.old_value}} - {{detail.new_value}}
+              </p>
+              <p *ngIf="journal.notes">{{journal.notes}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </section>
 

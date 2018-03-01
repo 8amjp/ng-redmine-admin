@@ -12,26 +12,30 @@ declare namespace Get {
     status: IdNameObject;
     priority: IdNameObject;
     author: IdNameObject;
-    assigned_to: IdNameObject;
-    category: IdNameObject;
-    fixed_version: IdNameObject;
-    parent: IdObject;
+    assigned_to?: IdNameObject;
+    category?: IdNameObject;
+    fixed_version?: IdNameObject;
+    parent?: IdObject;
     subject: string;
-    description: string;
-    start_date: string;
-    due_date: string;
-    done_ratio: number;
-    estimated_hours: number;
-    spent_hours: number;
-    custom_fields: CustomFieldObject[];
+    description?: string;
+    start_date?: string;
+    due_date?: string;
+    done_ratio?: number;
+    is_private: number;
+    estimated_hours?: number;
+    total_estimated_hours?: number;
+    spent_hours?: number;
+    total_spent_hours?: number;
+    custom_fields?: CustomFieldObject[];
     created_on: string;
-    updated_on: string;
-    
-    children: Get.Issue[];
-    attachments: AttachmentObject[];
-    relations: RelationObject[];
-    journals: JournalObject[];
-    watchers: IdNameObject[];
+    updated_on?: string;
+    closed_on?: string;
+
+    children?: Get.Issue[];
+    attachments?: AttachmentObject[];
+    relations?: RelationObject[];
+    journals?: JournalObject[];
+    watchers?: IdNameObject[];
   }
 }
 
@@ -41,16 +45,20 @@ declare namespace Post {
     tracker_id: number;
     status_id: number;
     priority_id: number;
+    assigned_to_id?: number;
+    category_id?: number;
+    fixed_version_id?: number;
+    parent_issue_id?: number;
     subject: string;
-    description: string;
-    category_id: number;
-    fixed_version_id: number;
-    assigned_to_id: number;
-    parent_issue_id: number;
-    custom_fields: CustomFieldObject[];
-    watcher_user_ids: number[];
+    description?: string;
+    start_date?: string;
+    due_date?: string;
+    done_ratio?: number;
     is_private: number;
-    estimated_hours: number;
+    estimated_hours?: number;
+    spent_hours?: number;
+    custom_fields?: CustomFieldObject[];
+    watcher_user_ids?: number[];
   }
 }
 declare namespace Put {
@@ -59,21 +67,22 @@ declare namespace Put {
     tracker_id: number;
     status_id: number;
     priority_id: number;
+    assigned_to_id?: number;
+    category_id?: number;
+    fixed_version_id?: number;
+    parent_issue_id?: number;
     subject: string;
-    description: string;
-    start_date: string;
-    due_date: string;
-    done_ratio: number;
-    category_id: number;
-    fixed_version_id: number;
-    assigned_to_id: number;
-    parent_issue_id: number;
-    custom_fields: CustomFieldObject[];
-    watcher_user_ids: number[];
-    is_private: number;
-    estimated_hours: number;
-    notes: string;
-    private_notes: string;
+    description?: string;
+    start_date?: string;
+    due_date?: string;
+    done_ratio?: number;
+    is_private?: number;
+    estimated_hours?: number;
+    spent_hours?: number;
+    custom_fields?: CustomFieldObject[];
+    watcher_user_ids?: number[];
+    notes?: string;
+    private_notes?: string;
   }
 }
 
@@ -110,7 +119,7 @@ export interface DetailObject {
   property: string;
   name: string;
   old_value: number;
-  old_value: number;
+  new_value: number;
 }
 
 export interface IdObject {

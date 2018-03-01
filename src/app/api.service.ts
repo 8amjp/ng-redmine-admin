@@ -20,7 +20,26 @@ export class ApiService {
   }
 
   get(resource: string, parameters: string = ""): Observable<any> {
-    return this.http.get<any>(`${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`, { headers: this.headers });
+    return this.http.get<any>(
+      `${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`,
+      { headers: this.headers }
+    );
+  }
+
+  post(resource: string, body: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.protocol}://${this.host_name}${resource}${this.api_format}`,
+      JSON.stringify(body),
+      { headers: this.headers, observe: 'response' }
+    );
+  }
+
+  put(resource: string, body: any): Observable<any> {
+    return this.http.put<any>(
+      `${this.protocol}://${this.host_name}${resource}${this.api_format}`,
+      JSON.stringify(body),
+      { headers: this.headers, observe: 'response' }
+    );
   }
 
 }

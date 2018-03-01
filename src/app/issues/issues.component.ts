@@ -21,8 +21,9 @@ export class IssuesComponent implements OnInit {
   getIssues(): void {
     let parameters = [this.filter.status].join('&');
     this.api.get('/issues', parameters).subscribe(
-      data => {
-        this.issues = data
+      response => {
+        console.log(response);
+        this.issues = response;
       },
       error => console.log(error),
       () => console.log('onCompleted')
