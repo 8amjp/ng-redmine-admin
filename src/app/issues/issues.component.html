@@ -1,8 +1,23 @@
 <section class="content-header">
   <h1>{{ title }}</h1>
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-lg-2">
+      <div class="form-group">
+        <label>ステータス</label>
+        <select id="filter_status" [(ngModel)]="filter.status" class="form-control">
+          <option value="">すべて</option>
+          <option value="open">未完了</option>
+          <option value="closed">完了</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="content">
   <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">チケット一覧</h3>
+    </div>
     <div class="box-body" *ngIf="issues; else loading">
       <table *ngIf="issues.issues.length > 0; else empty" class="table table-condensed">
         <thead>

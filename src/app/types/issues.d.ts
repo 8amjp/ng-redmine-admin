@@ -1,0 +1,122 @@
+declare namespace Get {
+  export interface Issues {
+    issues: Get.Issue[];
+    total_count: number;
+    offset: number;
+    limit: number;
+  }
+  export interface Issue {
+    id: number;
+    project: IdNameObject;
+    tracker: IdNameObject;
+    status: IdNameObject;
+    priority: IdNameObject;
+    author: IdNameObject;
+    assigned_to: IdNameObject;
+    category: IdNameObject;
+    fixed_version: IdNameObject;
+    parent: IdObject;
+    subject: string;
+    description: string;
+    start_date: string;
+    due_date: string;
+    done_ratio: number;
+    estimated_hours: number;
+    spent_hours: number;
+    custom_fields: CustomFieldObject[];
+    created_on: string;
+    updated_on: string;
+    
+    children: Get.Issue[];
+    attachments: AttachmentObject[];
+    relations: RelationObject[];
+    journals: JournalObject[];
+    watchers: IdNameObject[];
+  }
+}
+
+declare namespace Post {
+  export interface Issue {
+    project_id: number;
+    tracker_id: number;
+    status_id: number;
+    priority_id: number;
+    subject: string;
+    description: string;
+    category_id: number;
+    fixed_version_id: number;
+    assigned_to_id: number;
+    parent_issue_id: number;
+    custom_fields: CustomFieldObject[];
+    watcher_user_ids: number[];
+    is_private: number;
+    estimated_hours: number;
+  }
+}
+declare namespace Put {
+  export interface Issue {
+    project_id: number;
+    tracker_id: number;
+    status_id: number;
+    priority_id: number;
+    subject: string;
+    description: string;
+    start_date: string;
+    due_date: string;
+    done_ratio: number;
+    category_id: number;
+    fixed_version_id: number;
+    assigned_to_id: number;
+    parent_issue_id: number;
+    custom_fields: CustomFieldObject[];
+    watcher_user_ids: number[];
+    is_private: number;
+    estimated_hours: number;
+    notes: string;
+    private_notes: string;
+  }
+}
+
+export interface CustomFieldObject {
+  id: number;
+  name: string;
+  value: string;
+}
+export interface AttachmentObject {
+  id: number;
+  filename: string;
+  filesize: number;
+  content_type: string;
+  description: string;
+  content_url: string;
+  author: IdNameObject;
+  created_on: string;
+}
+export interface RelationObject {
+  id: number;
+  issue_id: number;
+  issue_to_id: number;
+  relation_type: string;
+  delay: number;
+}
+export interface JournalObject {
+  id: number;
+  user: IdNameObject;
+  notes: string;
+  created_on: string;
+  details: DetailObject[];
+}
+export interface DetailObject {
+  property: string;
+  name: string;
+  old_value: number;
+  old_value: number;
+}
+
+export interface IdObject {
+  id: number;
+}
+export interface IdNameObject {
+  id: number;
+  name: string;
+}

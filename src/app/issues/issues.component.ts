@@ -8,11 +8,19 @@ export class IssuesComponent implements OnInit {
 
   title = 'チケット';
   issues;
+  filter = {
+    status: "open"
+  };
 
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.get('/issues').subscribe(
+    this.getIssues();
+  }
+
+  getIssues(): void {
+    let parameters = [this.filter.status].join('&');
+    this.api.get('/issues', parameters).subscribe(
       data => {
         this.issues = data
       },
