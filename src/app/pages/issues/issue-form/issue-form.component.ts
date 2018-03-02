@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import * as $ from 'jquery';
-import { ApiService } from '../../api.service';
-import { Get, Put } from '../../types/issues.d';
+import { ApiService } from '../../../services/api.service';
+import { Get, Put } from '../../../types/issues.d';
 
 @Component({
   templateUrl: './issue-form.component.html'

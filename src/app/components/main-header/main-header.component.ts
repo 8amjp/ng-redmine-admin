@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService }     from '../../api.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html'
+  selector: 'app-main-header',
+  templateUrl: './main-header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class MainHeaderComponent implements OnInit {
 
   issuesassignedtome;
   constructor(private api: ApiService) { }

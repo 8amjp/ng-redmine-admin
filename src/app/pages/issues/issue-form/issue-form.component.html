@@ -73,14 +73,14 @@
 
           <div class="form-group col-md-3">
             <label for="issue_category_id">カテゴリ</label>
-            <select [(ngModel)]="issue.category_id" [disabled]="options.issue_categories" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
+            <select [(ngModel)]="issue.category_id" [disabled]="options.issue_categories.length == 0" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
               <option *ngFor="let item of options.issue_categories" [value]="item.id">{{item.name}}</option>
             </select>
           </div>
 
           <div class="form-group col-md-3">
             <label for="issue_fixed_version_id">対象バージョン</label>
-            <select [(ngModel)]="issue.fixed_version_id" [disabled]="options.versions" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
+            <select [(ngModel)]="issue.fixed_version_id" [disabled]="options.versions.length == 0" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
               <option *ngFor="let item of options.versions" [value]="item.id">{{item.name}}</option>
             </select>
           </div>
