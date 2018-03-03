@@ -16,17 +16,11 @@ import { LoginModule } from './pages/login/login.module';
 import { AppComponent } from './app.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { InfoBoxComponent } from './components/info-box/info-box.component';
 
 import { ApiService } from './services/api.service';
+import { StyleService } from './services/style.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainHeaderComponent,
-    SidebarComponent,
-    InfoBoxComponent,
-  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -40,8 +34,14 @@ import { ApiService } from './services/api.service';
     MyModule,
     LoginModule,
   ],
+  declarations: [
+    AppComponent,
+    MainHeaderComponent,
+    SidebarComponent,
+  ],
   providers: [
-    ApiService
+    ApiService,
+    StyleService,
   ],
   bootstrap: [
     AppComponent

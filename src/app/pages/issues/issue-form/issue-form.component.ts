@@ -14,7 +14,7 @@ export class IssueFormComponent implements OnInit {
   title = 'チケット';
   issue: Put.Issue;
   gotIssue: Get.Issue;
-  options = {
+  enums = {
     projects: [],
     trackers: [],
     issue_statuses: [],
@@ -49,9 +49,8 @@ export class IssueFormComponent implements OnInit {
   }
 
   getIssue(): void {
-    this.api.get(`/issues/${this.id}`, 'include=journals').subscribe(
+    this.api.get(`/issues/${this.id}`, ['include=journals']).subscribe(
       response => {
-        console.log(response);
         this.gotIssue = response.issue;
         this.issue = {
           project_id: this.gotIssue.project.id,
@@ -67,14 +66,14 @@ export class IssueFormComponent implements OnInit {
           if(this.gotIssue[key]) this.issue[key] = this.gotIssue[key];
         }.bind(this));
         // TODO watcher_user_ids
-        this.getOptions(this.issue.project_id);
+        this.getEnums(this.issue.project_id);
       },
       error => console.log(error),
       () => {}
     );
   }
 
-  getOptions(project_id: number): void {
+  getEnums(project_id: number): void {
     Observable.forkJoin([
       this.api.get('/projects'),
       this.api.get('/trackers'),
@@ -84,12 +83,12 @@ export class IssueFormComponent implements OnInit {
       this.api.get(`/projects/${project_id}/versions`)
     ]).subscribe(
       response => {
-        this.options.projects = response[0].projects;
-        this.options.trackers = response[1].trackers;
-        this.options.issue_statuses = response[2].issue_statuses;
-        this.options.issue_priorities = response[3].issue_priorities;
-        this.options.issue_categories = response[4].issue_categories;
-        this.options.versions = response[5].versions;
+        this.enums.projects = response[0].projects;
+        this.enums.trackers = response[1].trackers;
+        this.enums.issue_statuses = response[2].issue_statuses;
+        this.enums.issue_priorities = response[3].issue_priorities;
+        this.enums.issue_categories = response[4].issue_categories;
+        this.enums.versions = response[5].versions;
       },
       error => console.log(error),
       () => {}

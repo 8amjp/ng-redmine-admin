@@ -6,15 +6,13 @@ import { RouterModule } from '@angular/router';
 import { ActivityComponent } from './activity.component';
 
 @NgModule({
-  declarations: [
-    ActivityComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    ActivityComponent,
   ]
 })
 export class ActivityModule { }

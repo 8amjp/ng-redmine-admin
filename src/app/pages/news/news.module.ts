@@ -6,15 +6,13 @@ import { RouterModule } from '@angular/router';
 import { NewsComponent } from './news.component';
 
 @NgModule({
-  declarations: [
-    NewsComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    NewsComponent,
   ]
 })
 export class NewsModule { }

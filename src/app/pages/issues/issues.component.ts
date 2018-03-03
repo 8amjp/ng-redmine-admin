@@ -19,7 +19,7 @@ export class IssuesComponent implements OnInit {
   }
 
   getIssues(): void {
-    let parameters = [this.filter.status].join('&');
+    let parameters = [this.filter.status];
     this.api.get('/issues', parameters).subscribe(
       response => {
         console.log(response);

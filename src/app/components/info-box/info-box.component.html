@@ -1,3 +1,13 @@
-<p>
-  info-box works!
-</p>
+<div class="info-box" [ngClass]="boxBg">
+  <span class="info-box-icon" [ngClass]="iconBg"><i [ngClass]="icon"></i></span>
+  <div class="info-box-content">
+    <span class="info-box-text">{{ text }}</span>
+    <span class="info-box-number">{{ number }}</span>
+    <div class="progress" *ngIf="type=='second'">
+      <div class="progress-bar" [ngStyle]="{'width': progress}"></div>
+    </div>
+    <span class="progress-description">
+      {{ description }}
+    </span>
+  </div>
+</div>

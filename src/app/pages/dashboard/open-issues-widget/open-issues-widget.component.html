@@ -1,0 +1,13 @@
+<div class="row" *ngIf="data">
+  <div *ngFor="let item of data" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <alt-info-box
+      [type]="'second'"
+      [bg]="item.bg"
+      [icon]="item.icon"
+      [text]="item.text"
+      [(number)]="item.number"
+      [(progress)]="item.progress"
+      [(description)]="item.description">
+    </alt-info-box>
+  </div>
+</div>

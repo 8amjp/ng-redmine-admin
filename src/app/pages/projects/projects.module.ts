@@ -6,15 +6,13 @@ import { RouterModule } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 
 @NgModule({
-  declarations: [
-    ProjectsComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    ProjectsComponent,
   ]
 })
 export class ProjectsModule { }

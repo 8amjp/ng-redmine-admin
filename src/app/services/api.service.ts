@@ -6,10 +6,10 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ApiService {
 
-  private protocol: string   = environment.redmine_protocol   || "http";
-  private host_name: string  = environment.redmine_host_name  || "localhost/redmine";
-  private api_format: string = environment.redmine_api_format || ".json";
-  private api_key: string    = environment.redmine_api_key    || "";
+  private protocol: string   = environment.redmine_protocol   || 'http';
+  private host_name: string  = environment.redmine_host_name  || 'localhost/redmine';
+  private api_format: string = environment.redmine_api_format || '.json';
+  private api_key: string    = environment.redmine_api_key    || '';
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -19,9 +19,13 @@ export class ApiService {
     });
   }
 
-  get(resource: string, parameters: string = ""): Observable<any> {
+  /*
+    resource: 
+    parameters: 文字列または文字列の配列
+    */
+  get(resource: string, parameters: any = ''): Observable<any> {
     return this.http.get<any>(
-      `${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`,
+      `${this.protocol}://${this.host_name}${resource}${this.api_format}?${Array.isArray(parameters) ? parameters.join('&') : parameters}`,
       { headers: this.headers }
     );
   }

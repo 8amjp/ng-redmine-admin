@@ -7,16 +7,14 @@ import { MyComponent } from './my.component';
 import { MyIssuesComponent } from './my-issues/my-issues.component';
 
 @NgModule({
-  declarations: [
-    MyComponent,
-    MyIssuesComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    MyComponent,
+    MyIssuesComponent,
   ]
 })
 export class MyModule { }

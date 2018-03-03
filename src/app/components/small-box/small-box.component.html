@@ -1,0 +1,13 @@
+<div class="small-box" [ngClass]="color">
+  <div class="inner">
+    <h3>{{ number }}</h3>
+    <p>{{ text }}</p>
+  </div>
+  <div class="icon">
+    <i [ngClass]="icon"></i>
+  </div>
+  <a [routerLink]="link" class="small-box-footer">
+    {{ footer }}
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+</div>

@@ -7,16 +7,14 @@ import { IssuesComponent } from './issues.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 
 @NgModule({
-  declarations: [
-    IssuesComponent,
-    IssueFormComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    IssuesComponent,
+    IssueFormComponent,
   ]
 })
 export class IssuesModule { }

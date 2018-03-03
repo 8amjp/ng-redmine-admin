@@ -6,15 +6,13 @@ import { RouterModule } from '@angular/router';
 import { TimeEntriesComponent } from './time-entries.component';
 
 @NgModule({
-  declarations: [
-    TimeEntriesComponent,
-  ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
   ],
-  providers: [
+  declarations: [
+    TimeEntriesComponent,
   ]
 })
 export class TimeEntriesModule { }
