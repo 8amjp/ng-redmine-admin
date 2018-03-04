@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -9,20 +10,30 @@ export class IssuesComponent implements OnInit {
   title = 'チケット';
   issues;
   filter = {
-    status: "open"
+    status: "=open"
   };
 
-  constructor(private api: ApiService) { }
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute
+  ) {
+    route.queryParams.subscribe(params => {
+console.log(params);
+      if(params.status) this.filter.status = params.status;
+    });
+  }
 
   ngOnInit(): void {
     this.getIssues();
   }
 
   getIssues(): void {
-    let parameters = [this.filter.status];
+    let parameters = [
+      'status='+this.filter.status
+    ];
+console.log(parameters);
     this.api.get('/issues', parameters).subscribe(
       response => {
-        console.log(response);
         this.issues = response;
       },
       error => console.log(error),

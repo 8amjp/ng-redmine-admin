@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SmallBoxComponent implements OnInit {
 
-  @Input() color: string = 'bg-aqua';
+  @Input() bg: string = 'bg-aqua';
   @Input() number: number;
   @Input() text: string;
   @Input() icon: string = 'fa fa-info';

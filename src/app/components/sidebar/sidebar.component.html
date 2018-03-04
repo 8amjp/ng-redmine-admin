@@ -19,12 +19,30 @@
           <span>活動</span>
         </a>
       </li>
-      <li>
-        <a [routerLink]="['/issues']">
-          <i class="fa fa-tasks"></i>
-          <span>チケット</span>
+      
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-tasks"></i> <span>チケット</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['/issues']">
+              <i class="fa fa-circle-o text-red"></i>
+              未完了
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/issues']" [queryParams]="{status:'=closed'}">
+              <i class="fa fa-check-circle-o text-green"></i>
+              完了
+            </a>
+          </li>
+        </ul>
       </li>
+      
       <li>
         <a [routerLink]="['/time-entries']">
           <i class="fa fa-circle-o"></i>
