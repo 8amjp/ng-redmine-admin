@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'small-box-component',
+  selector: 'alt-small-box',
   templateUrl: './small-box.component.html'
 })
 export class SmallBoxComponent implements OnInit {

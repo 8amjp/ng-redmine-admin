@@ -6,10 +6,10 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ApiService {
 
-  private protocol: string   = environment.redmine_protocol   || 'http';
-  private host_name: string  = environment.redmine_host_name  || 'localhost/redmine';
-  private api_format: string = environment.redmine_api_format || '.json';
-  private api_key: string    = environment.redmine_api_key    || '';
+  private protocol: string   = environment['redmine_protocol']   || 'http';
+  private host_name: string  = environment['redmine_host_name']  || 'localhost/redmine';
+  private api_format: string = environment['redmine_api_format'] || '.json';
+  private api_key: string    = environment['redmine_api_key']    || '';
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient) {

@@ -19,15 +19,15 @@ export class OpenIssuesWidgetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-console.log(this.style.tracker)
     this.api.get('/trackers').subscribe(
       response => {
         this.items = response.trackers;
         this.items.forEach(function(item) {
           item.param = `tracker_id=${item.id}`;
+          let widgetStyle = this.style.tracker[item.id] || this.style.primary;
           this.data.push({
-            bg: this.style.tracker[item.id]['bg'],
-            icon: this.style.tracker[item.id]['icon'],
+            bg: widgetStyle['bg'],
+            icon: widgetStyle['icon'],
             text: item.name,
             number: 0,
             progress: '0%',

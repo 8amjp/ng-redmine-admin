@@ -1,10 +1,10 @@
 <header class="main-header">
   <a [routerLink]="['/']" class="logo">
     <span class="logo-mini">
-      <i class="fa fa-ticket"></i>
+      <i class="fa fa-sticky-note-o"></i>
     </span>
     <span class="logo-lg">
-      <i class="fa fa-ticket"></i>
+      <i class="fa fa-sticky-note-o"></i>
       NgRedmineAdmin
     </span>
   </a>
@@ -18,36 +18,9 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li class="dropdown tasks-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-ticket"></i>
-            <span class="label label-danger" *ngIf="issuesassignedtome">{{ issuesassignedtome.total_count }}</span>
-          </a>
-          <ul class="dropdown-menu" *ngIf="issuesassignedtome">
-            <li class="header">担当しているチケット({{ issuesassignedtome.total_count }})</li>
-            <li>
-              <ul class="menu">
-                <li *ngFor="let issue of issuesassignedtome.issues">
-                  <a [routerLink]="['/issues', issue.id]">
-                    <h3>
-                      {{issue.subject}}
-                      <small class="pull-right">{{issue.done_ratio}}%</small>
-                    </h3>
-                    <div class="progress xs">
-                      <div class="progress-bar progress-bar-aqua" style="width: {{issue.done_ratio}}%" role="progressbar"
-                        attr.aria-valuenow="{{issue.done_ratio}}" aria-valuemin="0" aria-valuemax="100">
-                        <span class="sr-only">{{issue.done_ratio}}% Complete</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="footer">
-              <a [routerLink]="['/my']">マイページへ</a>
-            </li>
-          </ul>
-        </li>
+        <li alt-messages-menu class="dropdown messages-menu"></li>
+        <li alt-notifications-menu class="dropdown notifications-menu"></li>
+        <li alt-tasks-menu class="dropdown tasks-menu"></li>
       </ul>
     </div>
   </nav>

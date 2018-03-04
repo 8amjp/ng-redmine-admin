@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { MainHeaderModule } from './components/main-header/main-header.module';
+import { SidebarModule } from './components/sidebar/sidebar.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 import { ActivityModule } from './pages/activity/activity.module';
 import { IssuesModule } from './pages/issues/issues.module';
@@ -14,8 +16,6 @@ import { MyModule } from './pages/my/my.module';
 import { LoginModule } from './pages/login/login.module';
 
 import { AppComponent } from './app.component';
-import { MainHeaderComponent } from './components/main-header/main-header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { ApiService } from './services/api.service';
 import { StyleService } from './services/style.service';
@@ -25,6 +25,8 @@ import { StyleService } from './services/style.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    MainHeaderModule,
+    SidebarModule,
     DashboardModule,
     ProjectsModule,
     ActivityModule,
@@ -36,8 +38,6 @@ import { StyleService } from './services/style.service';
   ],
   declarations: [
     AppComponent,
-    MainHeaderComponent,
-    SidebarComponent,
   ],
   providers: [
     ApiService,

@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'my', component: MyComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 const config: ExtraOptions = {

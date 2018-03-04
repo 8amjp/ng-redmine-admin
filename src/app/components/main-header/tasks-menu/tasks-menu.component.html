@@ -1,0 +1,28 @@
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  <i class="fa fa-flag-o"></i>
+  <span class="label label-danger" *ngIf="tasks">{{ tasks.total_count }}</span>
+</a>
+<ul class="dropdown-menu" *ngIf="tasks">
+  <li class="header">{{ header }} ({{ tasks.total_count }})</li>
+  <li>
+    <ul class="menu">
+      <li *ngFor="let issue of tasks.issues">
+        <a [routerLink]="['/issues', issue.id]">
+          <h3>
+            {{issue.subject}}
+            <small class="pull-right">{{issue.done_ratio}}%</small>
+          </h3>
+          <div class="progress xs">
+            <div class="progress-bar progress-bar-aqua" style="width: {{issue.done_ratio}}%" role="progressbar"
+              attr.aria-valuenow="{{issue.done_ratio}}" aria-valuemin="0" aria-valuemax="100">
+              <span class="sr-only">{{issue.done_ratio}}% Complete</span>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li class="footer">
+    <a [routerLink]="['/my']">マイページへ</a>
+  </li>
+</ul>
