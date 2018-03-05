@@ -41,27 +41,27 @@
 <hr>
 
 <div class="row">
-  <div class="form-group col-md-3">
+  <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_status_id">ステータス</label>
     <select formControlName="status_id" name="issue[status_id]" id="issue_status_id" class="form-control input-sm">
       <option *ngFor="let item of enums.issue_statuses" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 
-  <div class="form-group col-md-3">
+  <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_priority_id">優先度</label>
     <select formControlName="priority_id" name="issue[priority_id]" id="issue_priority_id" class="form-control input-sm">
       <option *ngFor="let item of enums.issue_priorities" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 
-  <div class="form-group col-md-3">
+  <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_assigned_to_id">担当者</label>
     <select formControlName="assigned_to_id" name="issue[assigned_to_id]" id="issue_assigned_to_id" class="form-control input-sm">
     </select>
   </div>
 
-  <div class="form-group col-md-3">
+  <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_category_id">カテゴリ</label>
     <select formControlName="category_id" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
       <option *ngFor="let item of enums.issue_categories" [value]="item.id">{{item.name}}</option>
@@ -79,7 +79,7 @@
 <hr>
 
 <div class="row">
-  <div class="form-group col-md-3" id="start_date_area">
+  <div class="form-group col-md-3">
     <label for="issue_start_date">開始日</label>
     <div class="input-group date">
       <div class="input-group-addon">
@@ -89,13 +89,24 @@
     </div>
   </div>
   
-  <div class="form-group col-md-3" id="due_date_area">
+  <div class="form-group col-md-3">
     <label for="issue_due_date">期日</label>
     <div class="input-group date">
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
       <input type="text" formControlName="due_date" name="issue[due_date]" id="issue_due_date" class="form-control input-sm pull-right">
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div formArrayName="custom_fields" class="row">
+  <div *ngFor="let control of issueFormGroup.get('custom_fields').controls; let i=index;" class="form-group col-md-3">
+    <div [formGroupName]="i">
+      <label for="issue_custom_field_values_1"></label>
+      <input formControlName="value" name="issue[custom_field_values][1]" id="issue_custom_field_values_1" class="form-control input-sm">
     </div>
   </div>
 </div>
