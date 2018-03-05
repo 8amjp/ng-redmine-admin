@@ -18,7 +18,6 @@ export class IssuesComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     route.queryParams.subscribe(params => {
-console.log(params);
       if(params.status) this.filter.status = params.status;
     });
   }
@@ -31,7 +30,6 @@ console.log(params);
     let parameters = [
       'status='+this.filter.status
     ];
-console.log(parameters);
     this.api.get('/issues', parameters).subscribe(
       response => {
         this.issues = response;

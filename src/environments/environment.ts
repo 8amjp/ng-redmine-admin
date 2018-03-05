@@ -4,7 +4,7 @@ export const environment = {
   redmine_host_name: "localhost/redmine",
   redmine_api_format: ".json",
   redmine_api_key: "",
-  
+
   layout: 'sidebar-collapse sidebar-mini skin-purple-light',
   styles: {
     tracker: {

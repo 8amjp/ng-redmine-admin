@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class StyleService {
 
-  private envStyles: object = environment['styles'] || null;
+  private env = environment['styles'] || null;
 
   private _contexts = {
     danger: { bg: 'bg-red', callout: 'callout-danger', alert: 'alert-danger', label: 'label-danger', modal: 'modal-danger', box: 'box-danger' },
@@ -41,9 +41,9 @@ export class StyleService {
 
   constructor() {
     // environment の styles をマージ
-    if(this.envStyles['tracker']) this._styles.tracker = this.envStyles['tracker'];
-    if(this.envStyles['status']) this._styles.status = this.envStyles['status'];
-    if(this.envStyles['priority']) this._styles.priority = this.envStyles['priority'];
+    if(this.env && this.env.hasOwnProperty('tracker')) this._styles.tracker = this.env['tracker'];
+    if(this.env && this.env.hasOwnProperty('status')) this._styles.status = this.env['status'];
+    if(this.env && this.env.hasOwnProperty('priority')) this._styles.priority = this.env['priority'];
 
     Object.keys(this._styles).forEach(function (resource) {
       Object.keys(this._styles[resource]).forEach(function (id) {
