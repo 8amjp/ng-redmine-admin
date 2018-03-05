@@ -51,13 +51,14 @@ export class OpenIssuesWidgetComponent implements OnInit {
         response => {
           let openIssues: number = response[0]['total_count'];
           let allIssues: number = response[1]['total_count'];
-          let ratio: string = ( allIssues > 0 ? Math.round( openIssues / allIssues * 100 ) : 0 ) + '%';
+          let ratio: string = ( allIssues > 0 ? Math.round( ( allIssues - openIssues ) / allIssues * 100 ) : 0 ) + '%';
           this.data[i].number = openIssues;
           this.data[i].progress = ratio;
-          this.data[i].description = ( allIssues > 0 ? `${ratio} 完了` : '-' );
+          this.data[i].description = ( allIssues > 0 ? `${ratio} 完了 (${allIssues - openIssues} / ${allIssues})` : '-' );
         },
         error => console.log(error),
-        () => {}
+        () => {
+        }
       );
     }.bind(this));
   }
