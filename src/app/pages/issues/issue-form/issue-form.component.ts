@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
-import * as $ from 'jquery';
 import { ApiService } from '../../../services/api.service';
 import { Get, Put } from '../../../types/issues.d';
 

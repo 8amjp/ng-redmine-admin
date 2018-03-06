@@ -18,6 +18,9 @@
           <option value="*">すべて</option>
           <option value="open">未完了</option>
           <option value="closed">完了</option>
+          <optgroup label="----">
+            <option *ngFor="let item of enums.issue_statuses" [value]="item.id">{{item.name}}</option>
+          </optgroup>
         </select>
       </div>
     </div>

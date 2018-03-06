@@ -2,11 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Select2Module } from 'ng2-select2';
+
 import { AppRoutingModule } from './app-routing.module';
 
-import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { MainHeaderModule } from './components/main-header/main-header.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
+import { ControlSidebarModule } from './components/control-sidebar/control-sidebar.module';
+
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 import { ActivityModule } from './pages/activity/activity.module';
 import { IssuesModule } from './pages/issues/issues.module';
@@ -24,9 +28,11 @@ import { StyleService } from './services/style.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    Select2Module,
     AppRoutingModule,
     MainHeaderModule,
     SidebarModule,
+    ControlSidebarModule,
     DashboardModule,
     ProjectsModule,
     ActivityModule,

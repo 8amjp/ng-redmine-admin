@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { ApiService } from '../../services/api.service';
+import { StyleService } from '../../services/style.service';
 
 @Component({
   templateUrl: './issues.component.html'
@@ -24,6 +25,7 @@ export class IssuesComponent implements OnInit {
 
   constructor(
     private api: ApiService,
+    private style: StyleService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {

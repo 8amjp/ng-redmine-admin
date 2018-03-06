@@ -43,7 +43,11 @@
           <tr *ngFor="let issue of issues.issues">
             <td><a [routerLink]="['/issues', issue.id]">{{issue.id}}</a></td>
             <td>{{issue.tracker?.name}}</td>
-            <td>{{issue.status?.name}}</td>
+            <td>
+              <span class="label" [ngClass]="style.status[issue.status.id]['label'] || 'default'">
+                {{issue.status?.name}}
+              </span>
+            </td>
             <td>{{issue.priority?.name}}</td>
             <td><a [routerLink]="['/issues', issue.id]">{{issue.subject}}</a></td>
             <td>{{issue.assigned_to?.name}}</td>
