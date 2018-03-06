@@ -91,6 +91,10 @@ console.log('onSubmit', { issue: this.issue });
     */
   }
 
+  onReset() {
+    this.issueFormGroup.reset(this.issue);
+  }
+
   getIssue(): void {
     this.api.get(`/issues/${this.id}`, ['include=journals']).subscribe(
       response => {

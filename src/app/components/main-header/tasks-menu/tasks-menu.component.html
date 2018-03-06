@@ -13,7 +13,7 @@
             <small class="pull-right">{{issue.done_ratio}}%</small>
           </h3>
           <div class="progress xs">
-            <div class="progress-bar progress-bar-aqua" style="width: {{issue.done_ratio}}%" role="progressbar"
+            <div class="progress-bar progress-bar-aqua"  [ngStyle]="{'width': issue.done_ratio+'%'}" role="progressbar"
               attr.aria-valuenow="{{issue.done_ratio}}" aria-valuemin="0" aria-valuemax="100">
               <span class="sr-only">{{issue.done_ratio}}% Complete</span>
             </div>

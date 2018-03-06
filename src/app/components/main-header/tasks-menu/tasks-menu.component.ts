@@ -13,7 +13,7 @@ export class TasksMenuComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.get('/issues', ['assigned_to_id=me']).subscribe(
+    this.api.get('/issues', 'assigned_to_id=me').subscribe(
       data => {
         this.tasks = data
       },

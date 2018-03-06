@@ -2,7 +2,20 @@
   <h1>{{ title }}</h1>
 </section>
 <section class="content">
-  <form [formGroup]="issueFormGroup" role="form" (ngSubmit)="onSubmit()" novalidate>
+  <form [formGroup]="issueFormGroup" role="form" (ngSubmit)="onSubmit()">
+
+    <div class="text-right">
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <li><a (click)="onReset()">Reset</a></li>
+        </ul>
+      </div>
+    </div>
 
     <div class="nav-tabs-custom">
 
@@ -12,9 +25,6 @@
         <li><a href="#tab_history" data-toggle="tab">履歴</a></li>
         <li class="pull-right">
           <a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
-        </li>
-        <li class="pull-right">
-          <button type="submit" class="btn btn-success">Submit</button>
         </li>
       </ul>
 

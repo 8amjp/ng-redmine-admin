@@ -23,7 +23,7 @@ export class OpenIssuesWidgetComponent implements OnInit {
       response => {
         this.items = response.trackers;
         this.items.forEach(function(item) {
-          item.param = `tracker_id=${item.id}`;
+          item.param = { tracker_id: item.id };
           let widgetStyle = this.style.tracker[item.id] || this.style.primary;
           this.data.push({
             bg: widgetStyle['bg'],
@@ -45,8 +45,8 @@ export class OpenIssuesWidgetComponent implements OnInit {
   getData(): void {
     this.items.forEach(function(item, i) {
       Observable.forkJoin([
-        this.api.get('/issues', [ item.param ]),
-        this.api.get('/issues', [ item.param, 'status_id=*'])
+        this.api.get('/issues', item.param),
+        this.api.get('/issues', Object.assign( { status_id: '*' }, item.param ))
       ]).subscribe(
         response => {
           let openIssues: number = response[0]['total_count'];

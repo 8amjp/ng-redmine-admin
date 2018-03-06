@@ -21,11 +21,24 @@ export class ApiService {
 
   /*
     resource: 
-    parameters: 文字列または文字列の配列
+    parameters: 文字列またはオブジェクト(ex: {status_id:'=open', project_id:1})
     */
-  get(resource: string, parameters: any = ''): Observable<any> {
+  get(resource: string, parameters: any = {}): Observable<any> {
+    // オブジェクト型の場合
+    if (typeof parameters !== 'string') {
+      let _params = [];
+      Object.keys(parameters).forEach(function (key) {
+        /*
+          値が空欄の場合は配列に追加しない。
+          値が空欄でない場合、等号/不等号で始まらないものは値の頭に=を付与し、キーと値を連結して配列に追加する
+          */
+        if(parameters[key] != '') _params.push(key + (/^[^=<>]/.test(parameters[key]) ? `=${parameters[key]}` : parameters[key]));
+      });
+      parameters = _params.join('&');
+    }
+    console.log(`GET: ${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`) //
     return this.http.get<any>(
-      `${this.protocol}://${this.host_name}${resource}${this.api_format}?${Array.isArray(parameters) ? parameters.join('&') : parameters}`,
+      `${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`,
       { headers: this.headers }
     );
   }
