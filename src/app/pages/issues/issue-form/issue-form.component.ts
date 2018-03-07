@@ -13,16 +13,8 @@ export class IssueFormComponent implements OnInit {
 
   title = 'チケット';
   issueFormGroup: FormGroup;
-  private issue: Put.Issue; // 修正対象のチケットデータ
-  private originalIssue: Get.Issue; // 修正前のチケットデータ
-  enums = {
-    projects: [],
-    trackers: [],
-    issue_statuses: [],
-    issue_priorities: [],
-    issue_categories: [],
-    versions: [],
-  };
+  issue: Put.Issue; // 修正対象のチケットデータ
+  originalIssue: Get.Issue; // 修正前のチケットデータ
   id: number;
 
   constructor(
@@ -102,7 +94,6 @@ console.log('onSubmit', { issue: this.issue });
       error => console.log(error),
       () => {
         this.patchIssue();
-        this.getEnums(this.issue.project_id);
       }
     );
   }
@@ -125,29 +116,6 @@ console.log('onSubmit', { issue: this.issue });
     // TODO watcher_user_ids
     this.issueFormGroup.setControl('custom_fields', this.fb.array(this.issue.custom_fields.map( cf => this.fb.group(cf) )));
     this.issueFormGroup.patchValue(this.issue);
-  }
-
-  // 選択肢の値を取得
-  getEnums(project_id: number): void {
-    Observable.forkJoin([
-      this.api.get('/projects'),
-      this.api.get('/trackers'),
-      this.api.get('/issue_statuses'),
-      this.api.get('/enumerations/issue_priorities'),
-      this.api.get(`/projects/${project_id}/issue_categories`),
-      this.api.get(`/projects/${project_id}/versions`)
-    ]).subscribe(
-      response => {
-        this.enums.projects = response[0].projects;
-        this.enums.trackers = response[1].trackers;
-        this.enums.issue_statuses = response[2].issue_statuses;
-        this.enums.issue_priorities = response[3].issue_priorities;
-        this.enums.issue_categories = response[4].issue_categories;
-        this.enums.versions = response[5].versions;
-      },
-      error => console.log(error),
-      () => {}
-    );
   }
 
 }

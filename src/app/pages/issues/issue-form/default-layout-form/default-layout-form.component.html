@@ -4,15 +4,15 @@
 
     <div class="form-group">
       <label for="issue_project_id">プロジェクト</label>
-      <select formControlName="project_id" name="issue[project_id]" id="issue_project_id" class="form-control input-sm">
-        <option *ngFor="let item of enums.projects" [value]="item.id">{{item.name}}</option>
+      <select formControlName="project_id" id="issue_project_id" class="form-control input-sm">
+        <option *ngFor="let item of api.projects" [value]="item.id">{{item.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="issue_tracker_id">トラッカー</label>
       <select formControlName="tracker_id" name="issue[tracker_id]" id="issue_tracker_id" class="form-control input-sm">
-        <option *ngFor="let item of enums.trackers" [value]="item.id">{{item.name}}</option>
+        <option *ngFor="let item of api.trackers" [value]="item.id">{{item.name}}</option>
       </select>
     </div>
 
@@ -44,14 +44,14 @@
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_status_id">ステータス</label>
     <select formControlName="status_id" name="issue[status_id]" id="issue_status_id" class="form-control input-sm">
-      <option *ngFor="let item of enums.issue_statuses" [value]="item.id">{{item.name}}</option>
+      <option *ngFor="let item of api.issue_statuses" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_priority_id">優先度</label>
     <select formControlName="priority_id" name="issue[priority_id]" id="issue_priority_id" class="form-control input-sm">
-      <option *ngFor="let item of enums.issue_priorities" [value]="item.id">{{item.name}}</option>
+      <option *ngFor="let item of api.issue_priorities" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 
@@ -64,14 +64,14 @@
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_category_id">カテゴリ</label>
     <select formControlName="category_id" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
-      <option *ngFor="let item of enums.issue_categories" [value]="item.id">{{item.name}}</option>
+      <option *ngFor="let item of api.issue_categories" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 
   <div class="form-group col-md-3">
     <label for="issue_fixed_version_id">対象バージョン</label>
     <select formControlName="fixed_version_id" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
-      <option *ngFor="let item of enums.versions" [value]="item.id">{{item.name}}</option>
+      <option *ngFor="let item of api.versions" [value]="item.id">{{item.name}}</option>
     </select>
   </div>
 </div>

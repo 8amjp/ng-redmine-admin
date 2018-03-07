@@ -6,7 +6,7 @@
         <label for="filter_tracker_id">トラッカー</label>
         <select formControlName="tracker_id" id="filter_tracker_id" class="form-control input-sm">
           <option value="">すべて</option>
-          <option *ngFor="let item of enums.trackers" [value]="item.id">{{item.name}}</option>
+          <option *ngFor="let item of api.trackers" [value]="item.id">{{item.name}}</option>
         </select>
       </div>
     </div>
@@ -19,7 +19,7 @@
           <option value="open">未完了</option>
           <option value="closed">完了</option>
           <optgroup label="----">
-            <option *ngFor="let item of enums.issue_statuses" [value]="item.id">{{item.name}}</option>
+            <option *ngFor="let item of api.issue_statuses" [value]="item.id">{{item.name}}</option>
           </optgroup>
         </select>
       </div>

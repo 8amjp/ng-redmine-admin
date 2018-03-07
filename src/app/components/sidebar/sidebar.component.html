@@ -7,19 +7,38 @@
           <span>ダッシュボード</span>
         </a>
       </li>
+
       <li>
-        <a [routerLink]="['/projects']">
-          <i class="fa fa-circle-o"></i>
+        <a [routerLink]="['/my']">
+          <i class="fa fa-user"></i>
+          <span>マイページ</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users"></i>
           <span>プロジェクト</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['/projects']">
+              <i class="fa fa-users"></i>
+              <span>プロジェクト一覧</span>
+            </a>
+          </li>
+          <li *ngFor="let project of api.projects">
+            <a [routerLink]="['/projects', project.id]">
+              <i class="fa fa-circle-o"></i>
+              {{ project.name }}
+            </a>
+          </li>
+        </ul>
       </li>
-      <li>
-        <a [routerLink]="['/activity']">
-          <i class="fa fa-circle-o"></i>
-          <span>活動</span>
-        </a>
-      </li>
-      
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-tasks"></i> <span>チケット</span>
@@ -30,37 +49,19 @@
         <ul class="treeview-menu">
           <li>
             <a [routerLink]="['/issues']">
-              <i class="fa fa-circle-o text-red"></i>
-              未完了
+              <i class="fa fa-users"></i>
+              <span>すべてのプロジェクト</span>
             </a>
           </li>
-          <li>
-            <a [routerLink]="['/issues']" [queryParams]="{status_id:'closed'}">
-              <i class="fa fa-check-circle-o text-green"></i>
-              完了
+          <li *ngFor="let project of api.projects">
+            <a [routerLink]="['/projects', project.id, 'issues']">
+              <i class="fa fa-circle-o"></i>
+              {{ project.name }}
             </a>
           </li>
         </ul>
       </li>
-      
-      <li>
-        <a [routerLink]="['/time-entries']">
-          <i class="fa fa-circle-o"></i>
-          <span>作業時間</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/news']">
-          <i class="fa fa-newspaper-o"></i>
-          <span>ニュース</span>
-        </a>
-      </li>
-      <li>
-        <a [routerLink]="['/my']">
-          <i class="fa fa-user"></i>
-          <span>マイページ</span>
-        </a>
-      </li>
+
     </ul>
   </section>
 </aside>

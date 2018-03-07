@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -10,6 +11,13 @@ export class ApiService {
   private host_name: string  = environment['redmine_host_name']  || 'localhost/redmine';
   private api_format: string = environment['redmine_api_format'] || '.json';
   private api_key: string    = environment['redmine_api_key']    || '';
+
+  // enumerations
+  private _projects: any[] = [];
+  private _trackers: any[] = [];
+  private _issue_statuses: any[] = [];
+  private _issue_priorities: any[] = [];
+
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -17,6 +25,37 @@ export class ApiService {
       'Content-Type': 'application/json',
       'X-Redmine-API-Key': this.api_key
     });
+    
+    // get enumerations
+    Observable.forkJoin([
+      this.get('/projects', 'include=trackers,issue_categories,enabled_modules'),
+      this.get('/trackers'),
+      this.get('/issue_statuses'),
+      this.get('/enumerations/issue_priorities')
+    ]).subscribe(
+      response => {
+        this._projects = response[0].projects.map(this.forSelect2);
+        this._trackers = response[1].trackers.map(this.forSelect2);
+        this._issue_statuses = response[2].issue_statuses.map(this.forSelect2);
+        this._issue_priorities = response[3].issue_priorities.map(this.forSelect2);
+      },
+      error => console.log(error),
+      () => {}
+    );
+  }
+
+  // getter/setter
+  get projects() {
+    return this._projects;
+  }
+  get trackers() {
+    return this._trackers;
+  }
+  get issue_statuses() {
+    return this._issue_statuses;
+  }
+  get issue_priorities() {
+    return this._issue_priorities;
   }
 
   /*
@@ -30,13 +69,12 @@ export class ApiService {
       Object.keys(parameters).forEach(function (key) {
         /*
           値が空欄の場合は配列に追加しない。
-          値が空欄でない場合、等号/不等号で始まらないものは値の頭に=を付与し、キーと値を連結して配列に追加する
+          値が空欄でない場合、等号/不等号で始まらないものは値の頭に=を付与し、キーと値を連結して配列に追加する。
           */
         if(parameters[key] != '') _params.push(key + (/^[^=<>]/.test(parameters[key]) ? `=${parameters[key]}` : parameters[key]));
       });
       parameters = _params.join('&');
     }
-    console.log(`GET: ${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`) //
     return this.http.get<any>(
       `${this.protocol}://${this.host_name}${resource}${this.api_format}?${parameters}`,
       { headers: this.headers }
@@ -57,6 +95,28 @@ export class ApiService {
       JSON.stringify(body),
       { headers: this.headers, observe: 'response' }
     );
+  }
+
+  // TODO
+  /*
+  getEnums(project_id: number): any {
+    if (project_id) { 
+      Observable.forkJoin(
+        this.get(`/projects/${project_id}/versions`)
+      ).subscribe(
+        response => {
+          this._versions = response[1].versions.map(this.forSelect2)
+        },
+        error => console.log(error),
+        () => {}
+      );
+    }
+  }
+  */
+
+  // ng2-iq-select2 用に変換
+  forSelect2(obj: any): {} {
+    return Object.assign(obj, { text: obj.name })
   }
 
 }

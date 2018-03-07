@@ -18,7 +18,7 @@ export class UserMenuComponent implements OnInit {
         this.user = response.user
       },
       error => console.log(error),
-      () => console.log('onCompleted')
+      () => {}
     );
   }
 

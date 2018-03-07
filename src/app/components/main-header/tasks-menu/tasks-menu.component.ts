@@ -10,7 +10,9 @@ export class TasksMenuComponent implements OnInit {
   tasks;
   header = '担当しているチケット';
 
-  constructor(private api: ApiService) { }
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.api.get('/issues', 'assigned_to_id=me').subscribe(
@@ -18,7 +20,7 @@ export class TasksMenuComponent implements OnInit {
         this.tasks = data
       },
       error => console.log(error),
-      () => console.log('onCompleted')
+      () => {}
     );
   }
 

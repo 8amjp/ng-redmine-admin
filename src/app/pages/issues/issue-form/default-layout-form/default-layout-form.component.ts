@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ApiService } from '../../../../services/api.service';
 
 @Component({
   selector: 'default-layout-form',
@@ -8,9 +9,10 @@ import { FormGroup } from '@angular/forms';
 export class DefaultLayoutFormComponent implements OnInit {
 
   @Input() issueFormGroup: FormGroup;
-  @Input() enums: {};
 
-  constructor() { }
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
   }

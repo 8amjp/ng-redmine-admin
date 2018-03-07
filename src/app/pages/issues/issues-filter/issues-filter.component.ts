@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'issues-filter',
@@ -8,9 +9,10 @@ import { FormGroup } from '@angular/forms';
 export class IssuesFilterComponent implements OnInit {
 
   @Input() filterFormGroup: FormGroup;
-  @Input() enums: {};
 
-  constructor() { }
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
   }
