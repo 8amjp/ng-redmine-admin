@@ -11,7 +11,6 @@ import { DueIssuesWidgetComponent } from './due-issues-widget/due-issues-widget.
 
 import { SmallBoxComponent } from '../../components/small-box/small-box.component';
 import { InfoBoxComponent } from '../../components/info-box/info-box.component';
-import { IssuesFilterPipe } from './issues-filter.pipe';
 
 @NgModule({
   imports: [
@@ -26,7 +25,6 @@ import { IssuesFilterPipe } from './issues-filter.pipe';
     DueIssuesWidgetComponent,
     SmallBoxComponent,
     InfoBoxComponent,
-    IssuesFilterPipe,
   ]
 })
 export class DashboardModule { }

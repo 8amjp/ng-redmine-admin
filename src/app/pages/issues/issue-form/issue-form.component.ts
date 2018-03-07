@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { ApiService } from '../../../services/api.service';
-import { Get, Put } from '../../../types/issues.d';
+import { IssueResponse, IssueParameters } from '../../../types/issues.d';
 
 @Component({
   templateUrl: './issue-form.component.html'
@@ -13,8 +13,8 @@ export class IssueFormComponent implements OnInit {
 
   title = 'チケット';
   issueFormGroup: FormGroup;
-  issue: Put.Issue; // 修正対象のチケットデータ
-  originalIssue: Get.Issue; // 修正前のチケットデータ
+  issue: IssueParameters; // 修正対象のチケットデータ
+  originalIssue: IssueResponse; // 修正前のチケットデータ
   id: number;
 
   constructor(

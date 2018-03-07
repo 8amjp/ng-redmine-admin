@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import { Get } from '../../../types/users.d';
+import { UserResponse } from '../../../types/users.d';
 
 @Component({
   selector: '[alt-user-menu]',
@@ -8,7 +8,7 @@ import { Get } from '../../../types/users.d';
 })
 export class UserMenuComponent implements OnInit {
 
-  user: Get.User;
+  user: UserResponse;
 
   constructor(private api: ApiService) { }
 

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import * as moment from 'moment';
-
 import { ApiService } from '../../../services/api.service';
 import { StyleService } from '../../../services/style.service';
 
@@ -12,6 +11,7 @@ import { StyleService } from '../../../services/style.service';
 })
 export class NewIssuesWidgetComponent implements OnInit {
 
+  @Input() project_id: number;
   data: any[] = [];
   items: any[];
 
@@ -49,7 +49,7 @@ export class NewIssuesWidgetComponent implements OnInit {
   getData(): void {
     let today = moment().format('YYYY-MM-DD');
     this.items.forEach(function(item, i) {
-      this.api.get('/issues', Object.assign({ status_id: '*', created_on: today }, item.param )).subscribe(
+      this.api.get('/issues', Object.assign({ status_id: '*', created_on: today }, { project_id: this.project_id }, item.param )).subscribe(
         response => {
           this.data[i].number = response['total_count'];
           this.data[i].issues = response['issues'];

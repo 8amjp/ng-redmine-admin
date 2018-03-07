@@ -1,11 +1,11 @@
 export const environment = {
   production: false,
-  redmine_protocol: "http",
-  redmine_host_name: "localhost/redmine",
-  redmine_api_format: ".json",
-  redmine_api_key: "",
+  redmine_protocol: 'http',
+  redmine_host_name: 'localhost/redmine',
+  redmine_api_format: '.json',
+  redmine_api_key: '',
 
-  layout: 'sidebar-collapse sidebar-mini skin-purple-light',
+  layout: 'sidebar-collapse sidebar-mini skin-purple',
   styles: {
     tracker: {
       1: { context: 'danger', icon: 'fa fa-bug' }, // バグ

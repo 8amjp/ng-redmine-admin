@@ -14,6 +14,8 @@ import { IssueFormComponent } from './pages/issues/issue-form/issue-form.compone
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'projects', component: ProjectsComponent },
+  { path: 'projects/:project_id', component: DashboardComponent },
+  { path: 'projects/:project_id/issues', component: IssuesComponent },
   { path: 'activity', component: ActivityComponent },
   { path: 'issues', component: IssuesComponent },
   { path: 'issues/:id', component: IssueFormComponent },

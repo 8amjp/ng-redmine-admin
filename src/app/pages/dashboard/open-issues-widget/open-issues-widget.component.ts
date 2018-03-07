@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { ApiService } from '../../../services/api.service';
@@ -10,6 +10,7 @@ import { StyleService } from '../../../services/style.service';
 })
 export class OpenIssuesWidgetComponent implements OnInit {
 
+  @Input() project_id: number;
   data: any[] = [];
   items: any[];
 
@@ -45,8 +46,8 @@ export class OpenIssuesWidgetComponent implements OnInit {
   getData(): void {
     this.items.forEach(function(item, i) {
       Observable.forkJoin([
-        this.api.get('/issues', item.param),
-        this.api.get('/issues', Object.assign( { status_id: '*' }, item.param ))
+        this.api.get('/issues', Object.assign( {}, { project_id: this.project_id }, item.param)),
+        this.api.get('/issues', Object.assign( {}, { status_id: '*' }, { project_id: this.project_id }, item.param ))
       ]).subscribe(
         response => {
           let openIssues: number = response[0]['total_count'];

@@ -1,5 +1,12 @@
 <section class="content-header">
-  <h1>{{ title }}</h1>
+  <h1 *ngIf="project">
+    {{ project.name }}
+  </h1>
+  <ol *ngIf="project" class="breadcrumb">
+    <li><i class="fa fa-dashboard"></i> Home</li>
+    <li *ngIf="project.parent">{{ project.parent.name }}</li>
+    <li class="active">{{ project.name }}</li>
+  </ol>
 </section>
 
 <section class="content">

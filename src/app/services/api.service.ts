@@ -68,10 +68,12 @@ export class ApiService {
       let _params = [];
       Object.keys(parameters).forEach(function (key) {
         /*
-          値が空欄の場合は配列に追加しない。
+          値が空欄またはnullの場合は配列に追加しない。
           値が空欄でない場合、等号/不等号で始まらないものは値の頭に=を付与し、キーと値を連結して配列に追加する。
           */
-        if(parameters[key] != '') _params.push(key + (/^[^=<>]/.test(parameters[key]) ? `=${parameters[key]}` : parameters[key]));
+        if(parameters[key] != '' && parameters[key] != null) {
+          _params.push(key + (/^[^=<>]/.test(parameters[key]) ? `=${parameters[key]}` : parameters[key]));
+        }
       });
       parameters = _params.join('&');
     }

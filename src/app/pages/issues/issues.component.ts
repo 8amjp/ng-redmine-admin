@@ -5,14 +5,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { ApiService } from '../../services/api.service';
 import { StyleService } from '../../services/style.service';
+import { ProjectResponse } from '../../types/projects.d';
 
 @Component({
   templateUrl: './issues.component.html'
 })
 export class IssuesComponent implements OnInit {
 
-  title = 'チケット';
   issues;
+  project: ProjectResponse;
   filterFormGroup: FormGroup;
 
   constructor(
@@ -22,8 +23,12 @@ export class IssuesComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.filterFormGroup = fb.group({
-      tracker_id: [''],
-      status_id: ['open']
+      project_id: null,
+      tracker_id: null,
+      status_id: 'open'
+    });
+    route.params.subscribe(params => {
+      this.filterFormGroup.patchValue(params);
     });
     route.queryParams.subscribe(params => {
       this.filterFormGroup.patchValue(params);
@@ -31,6 +36,16 @@ export class IssuesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let project_id: number = this.filterFormGroup.get('project_id').value;
+    if (project_id) {
+      this.api.get(`/projects/${project_id}`).subscribe(
+        response => {
+          this.project = response.project;
+        },
+        error => console.log(error),
+        () => {}
+      );
+    }
     this.filterFormGroup.valueChanges.subscribe(
       (form: any) => {
         this.getIssues(form);
@@ -48,7 +63,7 @@ export class IssuesComponent implements OnInit {
         this.issues = response;
       },
       error => console.log(error),
-      () => console.log('onCompleted')
+      () => {}
     );
   }
 

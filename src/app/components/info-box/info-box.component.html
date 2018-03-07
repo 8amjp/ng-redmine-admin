@@ -1,6 +1,6 @@
 <div class="info-box" [ngClass]="boxBg">
   <span class="info-box-icon" [ngClass]="iconBg"><i [ngClass]="icon"></i></span>
-  <div class="info-box-content" *ngIf="number; else loading">
+  <div class="info-box-content" *ngIf="number != null; else loading">
     <span class="info-box-text">{{ text }}</span>
     <span class="info-box-number">{{ number }}</span>
     <div class="progress" *ngIf="type=='second'">

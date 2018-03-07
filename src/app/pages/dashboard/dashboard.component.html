@@ -1,13 +1,21 @@
 <section class="content-header">
-  <h1>{{ title }}</h1>
+  <ol *ngIf="project" class="breadcrumb">
+    <li><i class="fa fa-dashboard"></i> Home</li>
+    <li *ngIf="project.parent">{{ project.parent.name }}</li>
+    <li class="active">{{ project.name }}</li>
+  </ol>
+  <h1 *ngIf="project">
+    {{ project.name }}
+  </h1>
 </section>
+
 <section class="content">
-  <open-issues-widget></open-issues-widget>
+  <open-issues-widget [project_id]="project_id"></open-issues-widget>
   <div class="row">
     <div class="col-md-6">
     </div>
     <div class="col-md-6">
-      <new-issues-widget></new-issues-widget>
+      <new-issues-widget [project_id]="project_id"></new-issues-widget>
     </div>
   </div>
 </section>

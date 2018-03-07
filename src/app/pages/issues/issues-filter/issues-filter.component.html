@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="filter_tracker_id">トラッカー</label>
         <select formControlName="tracker_id" id="filter_tracker_id" class="form-control input-sm">
-          <option value="">すべて</option>
+          <option value=null>すべて</option>
           <option *ngFor="let item of api.trackers" [value]="item.id">{{item.name}}</option>
         </select>
       </div>

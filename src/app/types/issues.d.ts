@@ -1,91 +1,69 @@
-declare namespace Get {
-  export interface Issues {
-    issues: Get.Issue[];
-    total_count: number;
-    offset: number;
-    limit: number;
-  }
-  export interface Issue {
-    id: number;
-    project: IdNameObject;
-    tracker: IdNameObject;
-    status: IdNameObject;
-    priority: IdNameObject;
-    author: IdNameObject;
-    assigned_to?: IdNameObject;
-    category?: IdNameObject;
-    fixed_version?: IdNameObject;
-    parent?: IdObject;
-    subject: string;
-    description?: string;
-    start_date?: string;
-    due_date?: string;
-    done_ratio?: number;
-    is_private: number;
-    estimated_hours?: number;
-    total_estimated_hours?: number;
-    spent_hours?: number;
-    total_spent_hours?: number;
-    custom_fields?: CustomFieldObject[];
-    created_on: string;
-    updated_on?: string;
-    closed_on?: string;
+// Get Issues
+export interface IssuesResponse {
+  issues: IssueResponse[];
+  total_count: number;
+  offset: number;
+  limit: number;
+}
+// Get Issues
+export interface IssueResponse {
+  id: number;
+  project: IdNameObject;
+  tracker: IdNameObject;
+  status: IdNameObject;
+  priority: IdNameObject;
+  author: IdNameObject;
+  assigned_to?: IdNameObject;
+  category?: IdNameObject;
+  fixed_version?: IdNameObject;
+  parent?: IdObject;
+  subject: string;
+  description?: string;
+  start_date?: string;
+  due_date?: string;
+  done_ratio?: number;
+  is_private: number;
+  estimated_hours?: number;
+  total_estimated_hours?: number;
+  spent_hours?: number;
+  total_spent_hours?: number;
+  custom_fields?: CustomFieldObject[];
+  created_on: string;
+  updated_on?: string;
+  closed_on?: string;
 
-    children?: Get.Issue[];
-    attachments?: AttachmentObject[];
-    relations?: RelationObject[];
-    journals?: JournalObject[];
-    watchers?: IdNameObject[];
-  }
+  children?: IssueResponse[];
+  attachments?: AttachmentObject[];
+  relations?: RelationObject[];
+  journals?: JournalObject[];
+  watchers?: IdNameObject[];
 }
 
-declare namespace Post {
-  export interface Issue {
-    project_id: number;
-    tracker_id: number;
-    status_id: number;
-    priority_id: number;
-    assigned_to_id?: number;
-    category_id?: number;
-    fixed_version_id?: number;
-    parent_issue_id?: number;
-    subject: string;
-    description?: string;
-    start_date?: string;
-    due_date?: string;
-    done_ratio?: number;
-    is_private: number;
-    estimated_hours?: number;
-    spent_hours?: number;
-    custom_fields?: CustomFieldObject[];
-    watcher_user_ids?: number[];
-  }
-}
-declare namespace Put {
-  export interface Issue {
-    project_id: number;
-    tracker_id: number;
-    status_id: number;
-    priority_id: number;
-    assigned_to_id?: number;
-    category_id?: number;
-    fixed_version_id?: number;
-    parent_issue_id?: number;
-    subject: string;
-    description?: string;
-    start_date?: string;
-    due_date?: string;
-    done_ratio?: number;
-    is_private?: number;
-    estimated_hours?: number;
-    spent_hours?: number;
-    custom_fields?: CustomFieldObject[];
-    watcher_user_ids?: number[];
-    notes?: string;
-    private_notes?: string;
-  }
+// POST/PUT Issue
+export interface IssueParameters {
+  project_id: number;
+  tracker_id: number;
+  status_id: number;
+  priority_id: number;
+  assigned_to_id?: number;
+  category_id?: number;
+  fixed_version_id?: number;
+  parent_issue_id?: number;
+  subject: string;
+  description?: string;
+  start_date?: string;
+  due_date?: string;
+  done_ratio?: number;
+  is_private?: number;
+  estimated_hours?: number;
+  spent_hours?: number;
+  custom_fields?: CustomFieldObject[];
+  watcher_user_ids?: number[];
+  notes?: string;
+  private_notes?: string;
 }
 
+// Objects
 export interface CustomFieldObject {
   id: number;
   name: string;
