@@ -8,7 +8,7 @@ import { ApiService } from '../../services/api.service';
 export class ProjectsComponent implements OnInit {
 
   title = 'プロジェクト';
-  projects;
+  projects: {};
 
   constructor(
     private api: ApiService
@@ -17,11 +17,28 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.api.get('/projects').subscribe(
       data => {
-        this.projects = data
+        this.projects = this.unflatten(data.projects);
       },
       error => console.log(error),
-      () => console.log('onCompleted')
+      () => {}
     );
+  }
+  
+  unflatten(items): {} {
+    var map: any = [];
+    var roots: any = [];
+    items.forEach(function(item, index, array){
+      map[item.id] = index;
+      item.children = [];
+    });
+    items.forEach(function(item, index, array){
+      if (item.parent) {
+        array[map[item.parent.id]].children.push(item);
+      } else {
+        roots.push(item);
+      }
+    });
+    return roots;
   }
 
 }
