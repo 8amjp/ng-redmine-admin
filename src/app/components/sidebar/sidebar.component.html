@@ -15,53 +15,19 @@
         </a>
       </li>
 
-      <li class="treeview">
-        <a href="#">
+      <li>
+        <a [routerLink]="['/projects']">
           <i class="fa fa-users"></i>
           <span>プロジェクト</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
         </a>
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/projects']">
-              <i class="fa fa-users"></i>
-              <span>プロジェクト一覧</span>
-            </a>
-          </li>
-          <li *ngFor="let project of api.projects">
-            <a [routerLink]="['/projects', project.id]">
-              <i class="fa fa-circle-o"></i>
-              {{ project.name }}
-            </a>
-          </li>
-        </ul>
       </li>
 
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-tasks"></i> <span>チケット</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+      <li>
+        <a [routerLink]="['/issues']">
+          <i class="fa fa-tasks"></i>
+          <span>チケット</span>
         </a>
-        <ul class="treeview-menu">
-          <li>
-            <a [routerLink]="['/issues']">
-              <i class="fa fa-users"></i>
-              <span>すべてのプロジェクト</span>
-            </a>
-          </li>
-          <li *ngFor="let project of api.projects">
-            <a [routerLink]="['/projects', project.id, 'issues']">
-              <i class="fa fa-circle-o"></i>
-              {{ project.name }}
-            </a>
-          </li>
-        </ul>
       </li>
-
     </ul>
   </section>
 </aside>

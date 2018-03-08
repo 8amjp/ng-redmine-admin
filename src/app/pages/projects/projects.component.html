@@ -2,10 +2,11 @@
   <h1>{{ title }}</h1>
 </section>
 <section class="content">
-  <ul *ngIf="projects">
-    <li *ngFor="let project of projects">
-      <h3>{{project.name}}</h3>
-      <p>{{project.description}}</p>
+  <ul class="list-unstyled">
+    <ng-container *ngFor="let project of projects">
+    <li>
+      <project-box [project]="project"></project-box>
     </li>
+    </ng-container>
   </ul>
 </section>

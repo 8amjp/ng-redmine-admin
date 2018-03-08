@@ -1,11 +1,18 @@
-<div class="box">
+<div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">Default Box Example</h3>
+    <h3 class="box-title">{{project.name}}</h3>
     <div class="box-tools pull-right">
       <span class="label label-primary">Label</span>
     </div>
   </div>
   <div class="box-body">
-    The body of the box
+    <p>{{project.description}}</p>
   </div>
 </div>
+<ul *ngIf="project.children">
+  <ng-container *ngFor="let subproject of project.children">
+  <li>
+    <project-box [project]="subproject"></project-box>
+  </li>
+  </ng-container>
+</ul>

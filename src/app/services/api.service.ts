@@ -115,6 +115,23 @@ export class ApiService {
     }
   }
   */
+  
+  unflatten(items): {} {
+    var map: any = [];
+    var roots: any = [];
+    items.forEach(function(item, index, array){
+      map[item.id] = index;
+      item.children = [];
+    });
+    items.forEach(function(item, index, array){
+      if (item.parent) {
+        array[map[item.parent.id]].children.push(item);
+      } else {
+        roots.push(item);
+      }
+    });
+    return roots;
+  }
 
   // ng2-iq-select2 用に変換
   forSelect2(obj: any): {} {
