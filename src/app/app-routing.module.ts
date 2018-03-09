@@ -11,21 +11,34 @@ import { MyComponent } from './pages/my/my.component';
 import { LoginComponent } from './pages/login/login.component';
 import { IssueFormComponent } from './pages/issues/issue-form/issue-form.component';
 
-const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/:project_id', component: DashboardComponent },
-  { path: 'projects/:project_id/issues', component: IssuesComponent },
-  { path: 'activity', component: ActivityComponent },
-  { path: 'issues', component: IssuesComponent },
-  { path: 'issues/:id', component: IssueFormComponent },
-  { path: 'time-entries', component: TimeEntriesComponent },
-  { path: 'news', component: NewsComponent },
-  { path: 'my', component: MyComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
-];
+import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { ProjectsModule } from './pages/projects/projects.module';
+import { IssuesModule } from './pages/issues/issues.module';
+import { MyModule } from './pages/my/my.module';
+
+const routes: Routes = [{
+  path: 'dashboard',
+  component: DashboardComponent
+}, {
+  path: 'dashboard/:project_id',
+  component: DashboardComponent
+}, {
+  path: 'projects',
+  loadChildren: ()=> ProjectsModule
+}, {
+  path: 'projects/:project_id/issues',
+  loadChildren: ()=> IssuesModule
+}, {
+  path: 'issues',
+  loadChildren: ()=> IssuesModule
+}, {
+  path: 'my',
+  loadChildren: ()=> MyModule
+}, {
+  path: '', redirectTo: 'dashboard', pathMatch: 'full'
+}, {
+  path: '**', redirectTo: 'dashboard'
+}];
 
 const config: ExtraOptions = {
   useHash: true,

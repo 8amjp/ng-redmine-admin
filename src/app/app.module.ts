@@ -12,12 +12,8 @@ import { ControlSidebarModule } from './components/control-sidebar/control-sideb
 
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProjectsModule } from './pages/projects/projects.module';
-import { ActivityModule } from './pages/activity/activity.module';
 import { IssuesModule } from './pages/issues/issues.module';
-import { TimeEntriesModule } from './pages/time-entries/time-entries.module';
-import { NewsModule } from './pages/news/news.module';
 import { MyModule } from './pages/my/my.module';
-import { LoginModule } from './pages/login/login.module';
 
 import { AppComponent } from './app.component';
 
@@ -35,12 +31,8 @@ import { StyleService } from './services/style.service';
     ControlSidebarModule,
     DashboardModule,
     ProjectsModule,
-    ActivityModule,
     IssuesModule,
-    TimeEntriesModule,
-    NewsModule,
     MyModule,
-    LoginModule,
   ],
   declarations: [
     AppComponent,

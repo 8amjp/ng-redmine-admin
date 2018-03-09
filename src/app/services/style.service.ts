@@ -7,11 +7,11 @@ export class StyleService {
   private env = environment['styles'] || null;
 
   private _contexts = {
-    danger: { bg: 'bg-red', callout: 'callout-danger', alert: 'alert-danger', label: 'label-danger', modal: 'modal-danger', box: 'box-danger' },
-    warning: { bg: 'bg-yellow', callout: 'callout-warning', alert: 'alert-warning', label: 'label-warning', modal: 'modal-warning', box: 'box-warning' },
-    info: { bg: 'bg-aqua', callout: 'callout-info', alert: 'alert-info', label: 'label-info', modal: 'modal-info', box: 'box-info' },
-    primary: { bg: 'bg-light-blue', callout: 'callout-primary', label: 'label-primary', modal: 'modal-primary', box: 'box-primary' },
-    success: { bg: 'bg-green', callout: 'callout-success', alert: 'alert-success', label: 'label-success', modal: 'modal-success', box: 'box-success' }
+    primary: { bg: 'bg-light-blue', callout: 'callout-primary', label: 'label-primary', modal: 'modal-primary', box: 'box-primary', progressbar: 'progress-bar-primary' },
+    success: { bg: 'bg-green', callout: 'callout-success', alert: 'alert-success', label: 'label-success', modal: 'modal-success', box: 'box-success', progressbar: 'progress-bar-success' },
+    info: { bg: 'bg-aqua', callout: 'callout-info', alert: 'alert-info', label: 'label-info', modal: 'modal-info', box: 'box-info', progressbar: 'progress-bar-info' },
+    warning: { bg: 'bg-yellow', callout: 'callout-warning', alert: 'alert-warning', label: 'label-warning', modal: 'modal-warning', box: 'box-warning', progressbar: 'progress-bar-warning' },
+    danger: { bg: 'bg-red', callout: 'callout-danger', alert: 'alert-danger', label: 'label-danger', modal: 'modal-danger', box: 'box-danger', progressbar: 'progress-bar-danger' }
   }
 
   private _styles = {

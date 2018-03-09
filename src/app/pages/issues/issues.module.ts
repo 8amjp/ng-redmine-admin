@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { IssuesRoutingModule } from './issues-routing.module';
+
 import { IssuesComponent } from './issues.component';
 import { IssuesFilterComponent } from './issues-filter/issues-filter.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
@@ -14,6 +16,7 @@ import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    IssuesRoutingModule,
   ],
   declarations: [
     IssuesComponent,

@@ -1,12 +1,21 @@
 <div class="box box-primary">
   <div class="box-header with-border">
-    <h3 class="box-title">{{project.name}}</h3>
-    <div class="box-tools pull-right">
-      <span class="label label-primary">Label</span>
-    </div>
+    <h3 class="box-title">
+      <a [routerLink]="['/projects', project.id]">
+        <span>{{project.name}}</span>
+      </a>
+    </h3>
   </div>
   <div class="box-body">
     <p>{{project.description}}</p>
+  </div>
+  <div class="box-footer">
+    <a [routerLink]="['/projects', project.id]">
+      <span>概要</span>
+    </a>
+    <a [routerLink]="['/projects', project.id, 'issues']">
+      <span>すべてのチケットを表示</span>
+    </a>
   </div>
 </div>
 <ul *ngIf="project.children">
