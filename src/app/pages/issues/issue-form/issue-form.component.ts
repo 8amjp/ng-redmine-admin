@@ -114,7 +114,7 @@ console.log('onSubmit', { issue: this.issue });
       if(this.originalIssue[key]) this.issue[key] = this.originalIssue[key];
     }.bind(this));
     // TODO watcher_user_ids
-    this.issueFormGroup.setControl('custom_fields', this.fb.array(this.issue.custom_fields.map( cf => this.fb.group(cf) )));
+    if(this.issue.custom_fields) this.issueFormGroup.setControl('custom_fields', this.fb.array(this.issue.custom_fields.map( cf => this.fb.group(cf) )));
     this.issueFormGroup.patchValue(this.issue);
   }
 
