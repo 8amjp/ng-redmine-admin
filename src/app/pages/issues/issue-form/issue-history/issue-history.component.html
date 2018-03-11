@@ -1,17 +1,25 @@
-<ul class="timeline" *ngIf="originalIssue">
-  <li *ngFor="let journal of originalIssue.journals">
-    <i class="fa fa-edit bg-blue"></i>
-    <div class="timeline-item">
-      <span class="time"><i class="fa fa-clock-o"></i>{{journal.created_on | date:'medium' }}</span>
-      <h3 class="timeline-header">
-        <a href="#">#{{journal.id}}</a> {{journal.user.name}}
-      </h3>
-      <div class="timeline-body">
-        <p *ngFor="let detail of journal.details">
-          {{detail.name}} を {{detail.old_value}} から {{detail.new_value}} に変更
-        </p>
-        <p *ngIf="journal.notes">{{journal.notes}}</p>
+<ng-container *ngIf="originalIssue">
+  <ul class="timeline" *ngIf="originalIssue.journals; else empty">
+    <li *ngFor="let journal of originalIssue.journals">
+      <i class="fa fa-edit bg-blue"></i>
+      <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i>{{journal.created_on | date:'medium' }}</span>
+        <h3 class="timeline-header">
+          <a href="#">#{{journal.id}}</a> {{journal.user.name}}
+        </h3>
+        <div class="timeline-body" *ngIf="journal.details">
+          <p *ngFor="let detail of journal.details">
+            {{detail.name}} を {{detail.old_value}} から {{detail.new_value}} に変更
+          </p>
+          <p *ngIf="journal.notes">{{journal.notes}}</p>
+        </div>
       </div>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #empty>
+  <div class="callout callout-warning">
+    <p>表示するデータがありません</p>
+  </div>
+</ng-template>

@@ -11,6 +11,8 @@ import { IssueFormComponent } from './issue-form/issue-form.component';
 import { DefaultLayoutFormComponent } from './issue-form/default-layout-form/default-layout-form.component';
 import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.component';
 
+import { Select2Component } from '../../components/forms/select2/select2.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.
     IssueFormComponent,
     DefaultLayoutFormComponent,
     IssueHistoryComponent,
+    Select2Component,
   ]
 })
 export class IssuesModule { }

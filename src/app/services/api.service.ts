@@ -17,6 +17,7 @@ export class ApiService {
   private _trackers: any[] = [];
   private _issue_statuses: any[] = [];
   private _issue_priorities: any[] = [];
+  private _custom_fields: any[] = [];
 
   private headers: HttpHeaders;
 
@@ -25,19 +26,21 @@ export class ApiService {
       'Content-Type': 'application/json',
       'X-Redmine-API-Key': this.api_key
     });
-    
+
     // get enumerations
     Observable.forkJoin([
       this.get('/projects', 'include=trackers,issue_categories,enabled_modules'),
       this.get('/trackers'),
       this.get('/issue_statuses'),
-      this.get('/enumerations/issue_priorities')
+      this.get('/enumerations/issue_priorities'),
+      this.get('/custom_fields')
     ]).subscribe(
       response => {
-        this._projects = response[0].projects.map(this.forSelect2);
-        this._trackers = response[1].trackers.map(this.forSelect2);
-        this._issue_statuses = response[2].issue_statuses.map(this.forSelect2);
-        this._issue_priorities = response[3].issue_priorities.map(this.forSelect2);
+        this._projects = response[0].projects;
+        this._trackers = response[1].trackers;
+        this._issue_statuses = response[2].issue_statuses;
+        this._issue_priorities = response[3].issue_priorities;
+        this._custom_fields = response[4].custom_fields;
       },
       error => console.log(error),
       () => {}
@@ -57,9 +60,12 @@ export class ApiService {
   get issue_priorities() {
     return this._issue_priorities;
   }
+  get custom_fields() {
+    return this._custom_fields;
+  }
 
   /*
-    resource: 
+    resource:
     parameters: 文字列またはオブジェクト(ex: {status_id:'=open', project_id:1})
     */
   get(resource: string, parameters: any = {}): Observable<any> {
@@ -102,7 +108,7 @@ export class ApiService {
   // TODO
   /*
   getEnums(project_id: number): any {
-    if (project_id) { 
+    if (project_id) {
       Observable.forkJoin(
         this.get(`/projects/${project_id}/versions`)
       ).subscribe(
@@ -115,7 +121,7 @@ export class ApiService {
     }
   }
   */
-  
+
   unflatten(items): {} {
     var map: any = [];
     var roots: any = [];
@@ -131,11 +137,6 @@ export class ApiService {
       }
     });
     return roots;
-  }
-
-  // ng2-iq-select2 用に変換
-  forSelect2(obj: any): {} {
-    return Object.assign(obj, { text: obj.name })
   }
 
 }

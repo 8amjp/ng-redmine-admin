@@ -16,5 +16,4 @@ export class DefaultLayoutFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

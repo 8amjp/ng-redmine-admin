@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { IqSelect2Module } from 'ng2-iq-select2';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import { MainHeaderModule } from './components/main-header/main-header.module';
@@ -24,7 +22,6 @@ import { StyleService } from './services/style.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IqSelect2Module,
     AppRoutingModule,
     MainHeaderModule,
     SidebarModule,

@@ -5,7 +5,7 @@ export const environment = {
   redmine_api_format: '.json',
   redmine_api_key: '',
 
-  layout: 'sidebar-collapse sidebar-mini skin-purple',
+  layout: 'sidebar-collapse sidebar-mini fixed skin-purple',
   styles: {
     tracker: {
       1: { context: 'danger', icon: 'fa fa-bug' }, // バグ

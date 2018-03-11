@@ -4,15 +4,13 @@
 
     <div class="form-group">
       <label for="issue_project_id">プロジェクト</label>
-      <select formControlName="project_id" id="issue_project_id" class="form-control input-sm">
-        <option *ngFor="let item of api.projects" [value]="item.id">{{item.name}}</option>
+      <select select2 [options]="api.projects" formControlName="project_id" id="issue_project_id" class="form-control input-sm">
       </select>
     </div>
 
     <div class="form-group">
       <label for="issue_tracker_id">トラッカー</label>
-      <select formControlName="tracker_id" name="issue[tracker_id]" id="issue_tracker_id" class="form-control input-sm">
-        <option *ngFor="let item of api.trackers" [value]="item.id">{{item.name}}</option>
+      <select select2 [options]="api.trackers" formControlName="tracker_id" id="issue_tracker_id" class="form-control input-sm">
       </select>
     </div>
 
@@ -30,12 +28,12 @@
 
 <div class="form-group">
   <label for="issue_subject">題名</label>
-  <input type="text" formControlName="subject" name="issue[subject]" id="issue_subject" class="form-control input-sm">
+  <input type="text" formControlName="subject" id="issue_subject" class="form-control input-sm">
 </div>
 
 <div class="form-group">
   <label for="issue_description">説明</label>
-  <textarea formControlName="description" name="issue[description]" id="issue_description" class="form-control"></textarea>
+  <textarea formControlName="description" id="issue_description" class="form-control"></textarea>
 </div>
 
 <hr>
@@ -43,35 +41,31 @@
 <div class="row">
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_status_id">ステータス</label>
-    <select formControlName="status_id" name="issue[status_id]" id="issue_status_id" class="form-control input-sm">
-      <option *ngFor="let item of api.issue_statuses" [value]="item.id">{{item.name}}</option>
+    <select select2 [options]="api.issue_statuses" formControlName="status_id" id="issue_status_id" class="form-control input-sm">
     </select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_priority_id">優先度</label>
-    <select formControlName="priority_id" name="issue[priority_id]" id="issue_priority_id" class="form-control input-sm">
-      <option *ngFor="let item of api.issue_priorities" [value]="item.id">{{item.name}}</option>
+    <select select2 [options]="api.issue_priorities" formControlName="priority_id" id="issue_priority_id" class="form-control input-sm">
     </select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_assigned_to_id">担当者</label>
-    <select formControlName="assigned_to_id" name="issue[assigned_to_id]" id="issue_assigned_to_id" class="form-control input-sm">
+    <select formControlName="assigned_to_id" id="issue_assigned_to_id" class="form-control input-sm">
     </select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label for="issue_category_id">カテゴリ</label>
-    <select formControlName="category_id" name="issue[category_id]" id="issue_category_id" class="form-control input-sm">
-      <option *ngFor="let item of api.issue_categories" [value]="item.id">{{item.name}}</option>
+    <select select2 [options]="api.issue_categories" formControlName="category_id" id="issue_category_id" class="form-control input-sm">
     </select>
   </div>
 
   <div class="form-group col-md-3">
     <label for="issue_fixed_version_id">対象バージョン</label>
-    <select formControlName="fixed_version_id" name="issue[fixed_version_id]" id="issue_fixed_version_id" class="form-control input-sm">
-      <option *ngFor="let item of api.versions" [value]="item.id">{{item.name}}</option>
+    <select select2 [options]="api.versions" formControlName="fixed_version_id" id="issue_fixed_version_id" class="form-control input-sm">
     </select>
   </div>
 </div>
@@ -88,7 +82,7 @@
       <input type="text" formControlName="start_date" name="issue[start_date]" id="issue_start_date" class="form-control input-sm pull-right">
     </div>
   </div>
-  
+
   <div class="form-group col-md-3">
     <label for="issue_due_date">期日</label>
     <div class="input-group date">
