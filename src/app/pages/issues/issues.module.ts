@@ -12,6 +12,7 @@ import { DefaultLayoutFormComponent } from './issue-form/default-layout-form/def
 import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.component';
 
 import { Select2Component } from '../../components/forms/select2/select2.component';
+import { BootstrapDatetimepickerComponent } from '../../components/forms/bootstrap-datetimepicker/bootstrap-datetimepicker.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { Select2Component } from '../../components/forms/select2/select2.compone
     DefaultLayoutFormComponent,
     IssueHistoryComponent,
     Select2Component,
+    BootstrapDatetimepickerComponent,
   ]
 })
 export class IssuesModule { }

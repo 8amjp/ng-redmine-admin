@@ -18,4 +18,5 @@ export class Select2Component implements OnInit {
       width: "100%"
     });
   }
+
 }
