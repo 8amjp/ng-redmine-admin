@@ -69,6 +69,9 @@ console.log('valueChanges', form);
   }
 
   onSubmit() {
+    this.issue.start_date = moment(this.issue.start_date).format();
+    this.issue.due_date = moment(this.issue.due_date).format();
+
 console.log('onSubmit', { issue: this.issue });
     /*
     this.api.put(`/issues/${this.id}`, { issue: this.issue }).subscribe(

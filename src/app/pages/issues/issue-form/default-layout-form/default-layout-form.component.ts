@@ -9,6 +9,12 @@ import { ApiService } from '../../../../services/api.service';
 export class DefaultLayoutFormComponent implements OnInit {
 
   @Input() issueFormGroup: FormGroup;
+  datetimeOptions = {
+    format: 'YYYY-MM-DDTHH:mm:ss'
+  }
+  dateOptions = {
+    format: 'YYYY/MM/DD'
+  }
 
   constructor(
     private api: ApiService

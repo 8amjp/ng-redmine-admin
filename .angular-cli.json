@@ -22,6 +22,7 @@
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/ionicons/dist/css/ionicons.min.css",
         "../node_modules/@ng-select/ng-select/themes/default.theme.css",
+        "../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
         "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
         "../node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
         "styles.css"
@@ -29,6 +30,7 @@
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/moment/min/moment.min.js",
+        "../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/admin-lte/dist/js/adminlte.min.js"
       ],
