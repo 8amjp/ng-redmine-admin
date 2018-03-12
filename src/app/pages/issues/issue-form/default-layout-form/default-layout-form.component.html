@@ -3,15 +3,13 @@
   <div class="col-md-9">
 
     <div class="form-group">
-      <label for="issue_project_id">プロジェクト</label>
-      <select select2 [options]="api.projects" formControlName="project_id" id="issue_project_id" class="form-control input-sm">
-      </select>
+      <label>プロジェクト</label>
+      <ng-select formControlName="project_id" [items]="api.projects" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
     </div>
 
     <div class="form-group">
-      <label for="issue_tracker_id">トラッカー</label>
-      <select select2 [options]="api.trackers" formControlName="tracker_id" id="issue_tracker_id" class="form-control input-sm">
-      </select>
+      <label>トラッカー</label>
+      <ng-select formControlName="tracker_id" [items]="api.trackers" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
     </div>
 
   </div>
@@ -27,12 +25,12 @@
 </div>
 
 <div class="form-group">
-  <label for="issue_subject">題名</label>
-  <input type="text" formControlName="subject" id="issue_subject" class="form-control input-sm">
+  <label>題名</label>
+  <input type="text" formControlName="subject" id="issue_subject" class="form-control">
 </div>
 
 <div class="form-group">
-  <label for="issue_description">説明</label>
+  <label>説明</label>
   <textarea formControlName="description" id="issue_description" class="form-control"></textarea>
 </div>
 
@@ -40,56 +38,47 @@
 
 <div class="row">
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
-    <label for="issue_status_id">ステータス</label>
-    <select select2 [options]="api.issue_statuses" formControlName="status_id" id="issue_status_id" class="form-control input-sm">
-    </select>
+    <label>ステータス</label>
+    <ng-select formControlName="status_id" [items]="api.issue_statuses" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
-    <label for="issue_priority_id">優先度</label>
-    <select select2 [options]="api.issue_priorities" formControlName="priority_id" id="issue_priority_id" class="form-control input-sm">
-    </select>
+    <label>優先度</label>
+    <ng-select formControlName="priority_id" [items]="api.issue_priorities" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
-    <label for="issue_assigned_to_id">担当者</label>
-    <select formControlName="assigned_to_id" id="issue_assigned_to_id" class="form-control input-sm">
-    </select>
+    <label>担当者</label>
+    <ng-select formControlName="assigned_to_id" [items]="api.issue_priorities" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
-    <label for="issue_category_id">カテゴリ</label>
-    <select select2 [options]="api.issue_categories" formControlName="category_id" id="issue_category_id" class="form-control input-sm">
-    </select>
+    <label>カテゴリ</label>
+    <ng-select formControlName="category_id" [items]="api.issue_categories" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-md-3">
-    <label for="issue_fixed_version_id">対象バージョン</label>
-    <select select2 [options]="api.versions" formControlName="fixed_version_id" id="issue_fixed_version_id" class="form-control input-sm">
-    </select>
+    <label>対象バージョン</label>
+    <ng-select formControlName="fixed_version_id" [items]="api.versions" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
-</div>
 
-<hr>
-
-<div class="row">
   <div class="form-group col-md-3">
-    <label for="issue_start_date">開始日</label>
+    <label>開始日</label>
     <div class="input-group date">
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
-      <input type="text" formControlName="start_date" name="issue[start_date]" id="issue_start_date" class="form-control input-sm pull-right">
+      <input type="date" formControlName="start_date" id="issue_start_date" class="form-control pull-right">
     </div>
   </div>
 
   <div class="form-group col-md-3">
-    <label for="issue_due_date">期日</label>
+    <label>期日</label>
     <div class="input-group date">
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
-      <input type="text" formControlName="due_date" name="issue[due_date]" id="issue_due_date" class="form-control input-sm pull-right">
+      <input type="date" formControlName="due_date" id="issue_due_date" class="form-control pull-right">
     </div>
   </div>
 </div>
@@ -100,7 +89,7 @@
   <div *ngFor="let control of issueFormGroup.get('custom_fields').controls; let i=index;" class="form-group col-md-3">
     <div [formGroupName]="i">
       <label></label>
-      <input formControlName="value" class="form-control input-sm">
+      <input formControlName="value" class="form-control">
     </div>
   </div>
 </div>

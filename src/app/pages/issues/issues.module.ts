@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { IssuesRoutingModule } from './issues-routing.module';
-
 import { IssuesComponent } from './issues.component';
 import { IssuesFilterComponent } from './issues-filter/issues-filter.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
@@ -12,15 +12,13 @@ import { DefaultLayoutFormComponent } from './issue-form/default-layout-form/def
 import { CustomLayoutFormComponent } from './issue-form/custom-layout-form/custom-layout-form.component';
 import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.component';
 
-import { Select2Component } from '../../components/forms/select2/select2.component';
-import { BootstrapDatetimepickerComponent } from '../../components/forms/bootstrap-datetimepicker/bootstrap-datetimepicker.component';
-
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
     IssuesRoutingModule,
+    NgSelectModule,
   ],
   declarations: [
     IssuesComponent,
@@ -29,8 +27,6 @@ import { BootstrapDatetimepickerComponent } from '../../components/forms/bootstr
     DefaultLayoutFormComponent,
     CustomLayoutFormComponent,
     IssueHistoryComponent,
-    Select2Component,
-    BootstrapDatetimepickerComponent,
   ]
 })
 export class IssuesModule { }
