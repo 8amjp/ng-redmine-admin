@@ -43,5 +43,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# 
+# hidden files
 /src/environments/environment.local.ts
+*.hidden.*

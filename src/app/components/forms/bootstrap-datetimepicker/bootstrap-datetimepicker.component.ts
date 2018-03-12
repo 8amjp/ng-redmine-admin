@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit, Input } from '@angular/core';
 declare var $: any;
 
 @Component({
-  selector: '[bootstrap-datetimepicker]'
+  selector: '[bootstrap-datetimepicker]',
+  template: ''
 })
 export class BootstrapDatetimepickerComponent implements OnInit {
 

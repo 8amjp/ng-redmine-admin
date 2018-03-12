@@ -21,7 +21,7 @@
 
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_default_layout" data-toggle="tab">フォーム</a></li>
-        <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+        <li><a href="#tab_custom_layout" data-toggle="tab">フォーム(2)</a></li>
         <li><a href="#tab_history" data-toggle="tab">履歴</a></li>
         <li class="pull-right">
           <a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
@@ -32,8 +32,8 @@
         <div class="tab-pane active" id="tab_default_layout">
           <default-layout-form [issueFormGroup]="issueFormGroup"></default-layout-form>
         </div>
-        <div class="tab-pane" id="tab_2">
-          The European languages are members of the same family. Their separate existence is a myth.
+        <div class="tab-pane" id="tab_custom_layout">
+          <custom-layout-form [issueFormGroup]="issueFormGroup"></custom-layout-form>
         </div>
         <div class="tab-pane" id="tab_history">
           <issue-history [originalIssue]="originalIssue"></issue-history>

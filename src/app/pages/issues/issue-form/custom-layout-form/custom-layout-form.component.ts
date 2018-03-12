@@ -3,10 +3,10 @@ import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../../services/api.service';
 
 @Component({
-  selector: 'default-layout-form',
-  templateUrl: './default-layout-form.component.html'
+  selector: 'custom-layout-form',
+  templateUrl: './custom-layout-form.component.html'
 })
-export class DefaultLayoutFormComponent implements OnInit {
+export class CustomLayoutFormComponent implements OnInit {
 
   @Input() issueFormGroup: FormGroup;
 

@@ -9,6 +9,7 @@ import { IssuesComponent } from './issues.component';
 import { IssuesFilterComponent } from './issues-filter/issues-filter.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 import { DefaultLayoutFormComponent } from './issue-form/default-layout-form/default-layout-form.component';
+import { CustomLayoutFormComponent } from './issue-form/custom-layout-form/custom-layout-form.component';
 import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.component';
 
 import { Select2Component } from '../../components/forms/select2/select2.component';
@@ -26,6 +27,7 @@ import { BootstrapDatetimepickerComponent } from '../../components/forms/bootstr
     IssuesFilterComponent,
     IssueFormComponent,
     DefaultLayoutFormComponent,
+    CustomLayoutFormComponent,
     IssueHistoryComponent,
     Select2Component,
     BootstrapDatetimepickerComponent,
