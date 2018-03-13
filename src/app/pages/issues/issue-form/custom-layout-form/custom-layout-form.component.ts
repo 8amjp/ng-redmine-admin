@@ -5,7 +5,7 @@ import { IssueResponse } from '../../../../types/issues.d';
 
 @Component({
   selector: 'custom-layout-form',
-  templateUrl: './custom-layout-form.component.hidden.html'
+  templateUrl: './custom-layout-form.component.html'
 })
 export class CustomLayoutFormComponent implements OnChanges {
 
