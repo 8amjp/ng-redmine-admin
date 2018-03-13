@@ -16,8 +16,8 @@
   <div class="col-md-3">
 
     <div class="checkbox" id="issue_is_private_wrap">
-      <input type="hidden" value="0" formControlName="is_private" name="issue[is_private]">
-      <input type="checkbox" value="1" formControlName="is_private" name="issue[is_private]" id="issue_is_private">
+      <input type="hidden" value="0" formControlName="is_private">
+      <input type="checkbox" value="1" formControlName="is_private" id="issue_is_private" disabled>
       <label class="inline" for="issue_is_private" id="issue_is_private_label">プライベート</label>
     </div>
 
@@ -65,14 +65,14 @@
   <div class="form-group col-md-3">
     <label>開始日</label>
     <div class="form-group">
-      <sq-datetimepicker formControlName="start_date" [options]="dateOptions"></sq-datetimepicker>
+      <input type="date" formControlName="start_date" class="form-control">
     </div>
   </div>
 
   <div class="form-group col-md-3">
     <label>期日</label>
     <div class="form-group">
-      <sq-datetimepicker formControlName="due_date" [options]="dateOptions"></sq-datetimepicker>
+      <input type="date" formControlName="due_date" class="form-control">
     </div>
   </div>
 </div>
@@ -80,10 +80,10 @@
 <hr>
 
 <div formArrayName="custom_fields" class="row">
-  <div *ngFor="let control of issueFormGroup.get('custom_fields').controls; let i=index;" class="form-group col-md-3">
+  <div *ngFor="let cf of issueFormGroup.value.custom_fields; let i=index;" class="form-group col-md-3">
     <div [formGroupName]="i">
-      <label></label>
-      <input formControlName="value" class="form-control">
+      <label>{{cf.name}}</label>
+      <input type="text" formControlName="value" class="form-control">
     </div>
   </div>
 </div>

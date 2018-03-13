@@ -12,13 +12,6 @@ export class DefaultLayoutFormComponent implements OnInit {
   @Input() issueFormGroup: FormGroup;
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
 
-  datetimeOptions = {
-    format: 'YYYY-MM-DDTHH:mm:ss'
-  }
-  dateOptions = {
-    format: 'YYYY/MM/DD'
-  }
-
   constructor(
     private api: ApiService
   ) { }

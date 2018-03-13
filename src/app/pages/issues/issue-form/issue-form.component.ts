@@ -38,7 +38,7 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
       start_date: [''],
       due_date: [''],
       done_ratio: [null],
-      is_private: [null],
+      is_private: [0],
       estimated_hours: [null],
       spent_hours: [null],
       custom_fields: fb.array([]),
@@ -49,21 +49,24 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.issueFormGroup.valueChanges.subscribe(
-      (form: any) => {
-console.log('valueChanges', form);
-      }
-    );
     this.getIssue();
   }
 
   ngAfterViewInit(){
+    /*
+    this.issueFormGroup.valueChanges.subscribe(
+      (form: any) => {
+        console.log('valueChanges', form);
+      }
+    );
+    */
   }
 
   onSubmit() {
-console.log('onSubmit', { issue: this.issueFormGroup.value });
-    /*
-    this.api.put(`/issues/${this.id}`, { issue: this.issue }).subscribe(
+    let data = { issue: this.issueFormGroup.value };
+//    let data = { issue: {custom_fields: this.issueFormGroup.value.custom_fields} };
+    console.log(data);
+    this.api.put(`/issues/${this.id}`, data).subscribe(
       response => {
         console.log(response);
         this.getIssue();
@@ -71,7 +74,6 @@ console.log('onSubmit', { issue: this.issueFormGroup.value });
       error => console.log(error),
       () => {}
     );
-    */
   }
 
   onReset() {
@@ -106,7 +108,7 @@ console.log('onSubmit', { issue: this.issueFormGroup.value });
       start_date: _issue.start_date || '',
       due_date: _issue.due_date || '',
       done_ratio: _issue.done_ratio || null,
-      is_private: _issue.is_private || null,
+      is_private: _issue.is_private || 0,
       estimated_hours: _issue.estimated_hours || null,
       spent_hours: _issue.spent_hours || null
     });
@@ -115,7 +117,6 @@ console.log('onSubmit', { issue: this.issueFormGroup.value });
       _issue.custom_fields.forEach(cf => {
         custom_fields.push(this.fb.group({
           id: [cf.id],
-          name: [cf.name],
           value: [cf.value]
         }))
       })

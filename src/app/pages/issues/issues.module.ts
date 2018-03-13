@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SqDatetimepickerModule } from 'ngx-eonasdan-datetimepicker';
 
 import { IssuesRoutingModule } from './issues-routing.module';
 import { IssuesComponent } from './issues.component';
@@ -21,7 +20,6 @@ import { IssueHistoryComponent } from './issue-form/issue-history/issue-history.
     RouterModule,
     IssuesRoutingModule,
     NgSelectModule,
-    SqDatetimepickerModule,
   ],
   declarations: [
     IssuesComponent,

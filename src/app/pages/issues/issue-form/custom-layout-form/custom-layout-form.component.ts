@@ -12,19 +12,11 @@ export class CustomLayoutFormComponent implements OnChanges {
   @Input() issueFormGroup: FormGroup;
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
 
-  datetimeOptions = {
-    format: 'YYYY-MM-DDTHH:mm:ss'
-  }
-  dateOptions = {
-    format: 'YYYY/MM/DD'
-  }
-
   constructor(
     private api: ApiService
   ) { }
 
   ngOnChanges() {
-    console.log(this.issueFormGroup)
   }
 
 }
