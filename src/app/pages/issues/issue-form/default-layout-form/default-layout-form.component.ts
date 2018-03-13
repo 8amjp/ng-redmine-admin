@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../../services/api.service';
+import { IssueResponse } from '../../../../types/issues.d';
 
 @Component({
   selector: 'default-layout-form',
@@ -9,6 +10,8 @@ import { ApiService } from '../../../../services/api.service';
 export class DefaultLayoutFormComponent implements OnInit {
 
   @Input() issueFormGroup: FormGroup;
+  @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
+
   datetimeOptions = {
     format: 'YYYY-MM-DDTHH:mm:ss'
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -9,57 +9,26 @@ import { IssueResponse, IssueParameters } from '../../../types/issues.d';
 @Component({
   templateUrl: './issue-form.component.html'
 })
-export class IssueFormComponent implements OnInit {
+export class IssueFormComponent implements OnInit, AfterViewInit {
 
   title = 'チケット';
   issueFormGroup: FormGroup;
-  issue: IssueParameters; // 修正対象のチケットデータ
   originalIssue: IssueResponse; // 修正前のチケットデータ
   id: number;
+  fb: FormBuilder;
+  isFormReady: boolean = false;
 
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
   ) {
     route.params.subscribe(params => {
       this.id = params.id;
     });
-    this.issueFormGroup = fb.group({
-      project_id: [null, Validators.required],
-      tracker_id: [null, Validators.required],
-      status_id: [null, Validators.required],
-      priority_id: [null, Validators.required],
-      assigned_to_id: [null],
-      category_id: [null],
-      fixed_version_id: [null],
-      parent_issue_id: [null],
-      subject: ['', Validators.required],
-      description: [''],
-      start_date: [''],
-      due_date: [''],
-      done_ratio: [null],
-      is_private: [null],
-      estimated_hours: [null],
-      spent_hours: [null],
-      custom_fields: fb.array([
-        fb.group({
-          id: [null],
-          name: [''],
-          value: ['']
-        })
-      ]),
-      watcher_user_ids: fb.array([
-        fb.group({
-          id: [null]
-        })
-      ]),
-      notes: [''],
-      private_notes: ['']
-    });
   }
 
   ngOnInit(): void {
+    this.issueFormGroup = new FormGroup({});
     this.issueFormGroup.valueChanges.subscribe(
       (form: any) => {
 console.log('valueChanges', form);
@@ -68,8 +37,11 @@ console.log('valueChanges', form);
     this.getIssue();
   }
 
+  ngAfterViewInit(){
+  }
+
   onSubmit() {
-console.log('onSubmit', { issue: this.issue });
+console.log('onSubmit', { issue: this.issueFormGroup.value });
     /*
     this.api.put(`/issues/${this.id}`, { issue: this.issue }).subscribe(
       response => {
@@ -83,7 +55,6 @@ console.log('onSubmit', { issue: this.issue });
   }
 
   onReset() {
-    this.issueFormGroup.reset(this.issue);
   }
 
   getIssue(): void {
@@ -93,29 +64,47 @@ console.log('onSubmit', { issue: this.issue });
       },
       error => console.log(error),
       () => {
-        this.patchIssue();
+        this.buildIssueForm();
       }
     );
   }
 
   // 取得したissueデータをフォームにセット
-  patchIssue(): void {
-    this.issue = {
-      project_id: this.originalIssue.project.id,
-      tracker_id: this.originalIssue.tracker.id,
-      status_id: this.originalIssue.status.id,
-      priority_id: this.originalIssue.priority.id,
-      subject: this.originalIssue.subject
-    };
-    ['assigned_to','category','fixed_version','parent'].forEach(function(key) {
-      if(this.originalIssue[key] && this.originalIssue[key]['id']) this.issue[`${key}_id`] = this.originalIssue[key]['id'];
-    }.bind(this));
-    ['description','start_date','due_date','done_ratio','is_private','estimated_hours','spent_hours','custom_fields'].forEach(function(key) {
-      if(this.originalIssue[key]) this.issue[key] = this.originalIssue[key];
-    }.bind(this));
+  buildIssueForm(): void {
+    let _issue:IssueResponse = this.originalIssue;
+    this.issueFormGroup = this.fb.group({
+      project_id: [_issue.project.id, Validators.required],
+      tracker_id: [_issue.tracker.id, Validators.required],
+      status_id: [_issue.status.id, Validators.required],
+      priority_id: [_issue.priority.id, Validators.required],
+      assigned_to_id: [_issue.assigned_to.id || null],
+      category_id: [_issue.category.id || null],
+      fixed_version_id: [_issue.fixed_version.id || null],
+      parent_issue_id: [_issue.parent.id || null],
+      subject: [_issue.subject, Validators.required],
+      description: [_issue.description || ''],
+      start_date: [_issue.start_date || ''],
+      due_date: [_issue.due_date || ''],
+      done_ratio: [_issue.done_ratio || null],
+      is_private: [_issue.is_private || null],
+      estimated_hours: [_issue.estimated_hours || null],
+      spent_hours: [_issue.spent_hours || null],
+      notes: [''],
+      private_notes: ['']
+    });
+
+    //  if(this.originalIssue[key] && this.originalIssue[key]['id']) this.issue[`${key}_id`] = this.originalIssue[key]['id'];
+    //  if(this.originalIssue[key]) this.issue[key] = this.originalIssue[key];
+    if(_issue.custom_fields) {
+      let custom_fields = this.fb.array([]);
+      _issue.custom_fields.forEach(function(cf) {
+        custom_fields.push(this.fb.group(cf));
+      }.bind(this));
+      this.issueFormGroup.addControl('custom_fields', custom_fields);
+    }
     // TODO watcher_user_ids
-    if(this.issue.custom_fields) this.issueFormGroup.setControl('custom_fields', this.fb.array(this.issue.custom_fields.map( cf => this.fb.group(cf) )));
-    this.issueFormGroup.patchValue(this.issue);
+
+    this.isFormReady = true;
   }
 
 }
