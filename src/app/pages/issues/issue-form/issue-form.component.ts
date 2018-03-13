@@ -113,13 +113,15 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
       spent_hours: _issue.spent_hours || null
     });
     if(_issue.custom_fields) {
-      let custom_fields = <FormArray>this.issueFormGroup.controls.custom_fields;
+      let custom_fields = this.fb.array([]);
       _issue.custom_fields.forEach(cf => {
         custom_fields.push(this.fb.group({
           id: [cf.id],
+          name: [cf.name],
           value: [cf.value]
         }))
       })
+      this.issueFormGroup.setControl('custom_fields', custom_fields);
     }
     // TODO watcher_user_ids
   }
