@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
 </section>
 <section class="content">
-  <form [formGroup]="issueFormGroup" *ngIf="isFormReady" role="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="issueFormGroup" role="form" (ngSubmit)="onSubmit()">
 
     <div class="text-right">
       <div class="btn-group">
@@ -40,12 +40,6 @@
         </div>
       </div>
     </div>
-
-    <!-- loading -->
-    <div class="overlay" *ngIf="!issue">
-      <i class="fa fa-refresh fa-spin"></i>
-    </div>
-    <!-- /.loading -->
 
   </form>
 </section>

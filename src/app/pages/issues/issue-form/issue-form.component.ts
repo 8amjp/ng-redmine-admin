@@ -15,20 +15,40 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
   issueFormGroup: FormGroup;
   originalIssue: IssueResponse; // 修正前のチケットデータ
   id: number;
-  fb: FormBuilder;
-  isFormReady: boolean = false;
 
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {
     route.params.subscribe(params => {
       this.id = params.id;
     });
+    this.issueFormGroup = fb.group({
+      project_id: [null, Validators.required],
+      tracker_id: [null, Validators.required],
+      status_id: [null, Validators.required],
+      priority_id: [null, Validators.required],
+      assigned_to_id: [null],
+      category_id: [null],
+      fixed_version_id: [null],
+      parent_issue_id: [null],
+      subject: ['', Validators.required],
+      description: [''],
+      start_date: [''],
+      due_date: [''],
+      done_ratio: [null],
+      is_private: [null],
+      estimated_hours: [null],
+      spent_hours: [null],
+      custom_fields: fb.array([]),
+      watcher_user_ids: fb.array([]),
+      notes: [''],
+      private_notes: ['']
+    });
   }
 
   ngOnInit(): void {
-    this.issueFormGroup = new FormGroup({});
     this.issueFormGroup.valueChanges.subscribe(
       (form: any) => {
 console.log('valueChanges', form);
@@ -64,47 +84,43 @@ console.log('onSubmit', { issue: this.issueFormGroup.value });
       },
       error => console.log(error),
       () => {
-        this.buildIssueForm();
+        this.patchIssue();
       }
     );
   }
 
   // 取得したissueデータをフォームにセット
-  buildIssueForm(): void {
+  patchIssue(): void {
     let _issue:IssueResponse = this.originalIssue;
-    this.issueFormGroup = this.fb.group({
-      project_id: [_issue.project.id, Validators.required],
-      tracker_id: [_issue.tracker.id, Validators.required],
-      status_id: [_issue.status.id, Validators.required],
-      priority_id: [_issue.priority.id, Validators.required],
-      assigned_to_id: [_issue.assigned_to.id || null],
-      category_id: [_issue.category.id || null],
-      fixed_version_id: [_issue.fixed_version.id || null],
-      parent_issue_id: [_issue.parent.id || null],
-      subject: [_issue.subject, Validators.required],
-      description: [_issue.description || ''],
-      start_date: [_issue.start_date || ''],
-      due_date: [_issue.due_date || ''],
-      done_ratio: [_issue.done_ratio || null],
-      is_private: [_issue.is_private || null],
-      estimated_hours: [_issue.estimated_hours || null],
-      spent_hours: [_issue.spent_hours || null],
-      notes: [''],
-      private_notes: ['']
+    this.issueFormGroup.patchValue({
+      project_id: _issue.project.id,
+      tracker_id: _issue.tracker.id,
+      status_id: _issue.status.id,
+      priority_id: _issue.priority.id,
+      assigned_to_id: _issue.assigned_to ? _issue.assigned_to.id : null,
+      category_id: _issue.category ? _issue.category.id : null,
+      fixed_version_id: _issue.fixed_version ? _issue.fixed_version.id : null,
+      parent_issue_id: _issue.parent ? _issue.parent.id : null,
+      subject: _issue.subject,
+      description: _issue.description || '',
+      start_date: _issue.start_date || '',
+      due_date: _issue.due_date || '',
+      done_ratio: _issue.done_ratio || null,
+      is_private: _issue.is_private || null,
+      estimated_hours: _issue.estimated_hours || null,
+      spent_hours: _issue.spent_hours || null
     });
-
-    //  if(this.originalIssue[key] && this.originalIssue[key]['id']) this.issue[`${key}_id`] = this.originalIssue[key]['id'];
-    //  if(this.originalIssue[key]) this.issue[key] = this.originalIssue[key];
     if(_issue.custom_fields) {
-      let custom_fields = this.fb.array([]);
-      _issue.custom_fields.forEach(function(cf) {
-        custom_fields.push(this.fb.group(cf));
-      }.bind(this));
-      this.issueFormGroup.addControl('custom_fields', custom_fields);
+      let custom_fields = <FormArray>this.issueFormGroup.controls.custom_fields;
+      _issue.custom_fields.forEach(cf => {
+        custom_fields.push(this.fb.group({
+          id: [cf.id],
+          name: [cf.name],
+          value: [cf.value]
+        }))
+      })
     }
     // TODO watcher_user_ids
-
-    this.isFormReady = true;
   }
 
 }
