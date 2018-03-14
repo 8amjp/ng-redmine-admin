@@ -21,7 +21,13 @@
 
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_default_layout" data-toggle="tab">フォーム</a></li>
-        <li><a href="#tab_custom_layout" data-toggle="tab">フォーム(2)</a></li>
+        <li><a href="#tab_custom_layout" data-toggle="tab">カスタムフォーム</a></li>
+        <!--
+        <li><a href="#tab_tracker1_layout" data-toggle="tab">トラッカー1</a></li>
+        <li><a href="#tab_tracker2_layout" data-toggle="tab">トラッカー2</a></li>
+        <li><a href="#tab_tracker3_layout" data-toggle="tab">トラッカー3</a></li>
+        <li><a href="#tab_tracker4_layout" data-toggle="tab">トラッカー4</a></li>
+      -->
         <li><a href="#tab_history" data-toggle="tab">履歴</a></li>
         <li class="pull-right">
           <a href="#" class="text-muted"><i class="fa fa-gear"></i></a>
@@ -35,6 +41,20 @@
         <div class="tab-pane" id="tab_custom_layout">
           <custom-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></custom-layout-form>
         </div>
+        <!--
+        <div class="tab-pane" id="tab_tracker1_layout">
+          <tracker1-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker1-layout-form>
+        </div>
+        <div class="tab-pane" id="tab_tracker2_layout">
+          <tracker2-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker2-layout-form>
+        </div>
+        <div class="tab-pane" id="tab_tracker3_layout">
+          <tracker3-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker3-layout-form>
+        </div>
+        <div class="tab-pane" id="tab_tracker4_layout">
+          <tracker4-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker4-layout-form>
+        </div>
+        -->
         <div class="tab-pane" id="tab_history">
           <issue-history [originalIssue]="originalIssue"></issue-history>
         </div>

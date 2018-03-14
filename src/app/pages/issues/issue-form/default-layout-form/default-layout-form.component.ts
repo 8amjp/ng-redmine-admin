@@ -9,9 +9,9 @@ import { IssueResponse } from '../../../../types/issues.d';
 })
 export class DefaultLayoutFormComponent implements OnInit {
 
-  @Input() issueFormGroup: FormGroup;
+  @Input() issueFormGroup: FormGroup; // フォームデータ
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
-  @Input() projectEnums;
+  @Input() projectEnums;  // 選択肢の値
 
   constructor(
     private api: ApiService
@@ -23,4 +23,5 @@ export class DefaultLayoutFormComponent implements OnInit {
   trackByFn(i, item){
     return item.id
   }
+
 }

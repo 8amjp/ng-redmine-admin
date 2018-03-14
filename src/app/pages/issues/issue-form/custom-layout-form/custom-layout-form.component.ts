@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../../services/api.service';
 import { IssueResponse } from '../../../../types/issues.d';
@@ -7,17 +7,21 @@ import { IssueResponse } from '../../../../types/issues.d';
   selector: 'custom-layout-form',
   templateUrl: './custom-layout-form.component.html'
 })
-export class CustomLayoutFormComponent implements OnChanges {
+export class CustomLayoutFormComponent implements OnInit {
 
-  @Input() issueFormGroup: FormGroup;
+  @Input() issueFormGroup: FormGroup; // フォームデータ
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
-  @Input() projectEnums;
+  @Input() projectEnums;  // 選択肢の値
 
   constructor(
     private api: ApiService
   ) { }
 
-  ngOnChanges() {
+  ngOnInit() {
+  }
+
+  trackByFn(i, item){
+    return item.id
   }
 
 }

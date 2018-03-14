@@ -45,4 +45,4 @@ Thumbs.db
 
 # hidden files
 /src/environments/environment.local.ts
-*.hidden.*
+tracker*-layout-form/
