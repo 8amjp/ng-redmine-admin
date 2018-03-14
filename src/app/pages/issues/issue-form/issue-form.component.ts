@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -15,11 +15,20 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
   issueFormGroup: FormGroup;
   originalIssue: IssueResponse; // 修正前のチケットデータ
   id: number;
+  projectEnums = {
+    trackers: {},
+    issue_categories: {},
+    enabled_modules: {},
+    time_entry_activities: {},
+    memberships: {},
+    versions: {}
+  }
 
   constructor(
     private api: ApiService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {
     route.params.subscribe(params => {
       this.id = params.id;
@@ -52,7 +61,8 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
     this.getIssue();
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
+    this.cd.detectChanges();
     /*
     this.issueFormGroup.valueChanges.subscribe(
       (form: any) => {
@@ -79,6 +89,25 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
   onReset() {
   }
 
+  getProjectEnums(project_id: number): any {
+    Observable.forkJoin(
+      this.api.get(`/projects/${project_id}`, 'include=trackers,issue_categories,enabled_modules,time_entry_activities'),
+      this.api.get(`/projects/${project_id}/memberships`, 'limit=100'),
+      this.api.get(`/projects/${project_id}/versions`)
+    ).subscribe(
+      response => {
+        this.projectEnums.trackers = response[0].project.trackers || null;
+        this.projectEnums.issue_categories = response[0].project.issue_categories || null;
+        this.projectEnums.enabled_modules = response[0].project.enabled_modules || null;
+        this.projectEnums.time_entry_activities = response[0].project.time_entry_activities || null;
+        this.projectEnums.memberships = response[1].memberships;
+        this.projectEnums.versions = response[2].versions;
+      },
+      error => console.log(error),
+      () => {}
+    );
+  }
+
   getIssue(): void {
     this.api.get(`/issues/${this.id}`, ['include=journals']).subscribe(
       response => {
@@ -87,6 +116,7 @@ export class IssueFormComponent implements OnInit, AfterViewInit {
       error => console.log(error),
       () => {
         this.patchIssue();
+        this.getProjectEnums(this.originalIssue.project.id);
       }
     );
   }

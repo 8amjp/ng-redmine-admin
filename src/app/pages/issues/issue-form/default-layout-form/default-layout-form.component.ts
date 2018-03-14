@@ -11,6 +11,7 @@ export class DefaultLayoutFormComponent implements OnInit {
 
   @Input() issueFormGroup: FormGroup;
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
+  @Input() projectEnums;
 
   constructor(
     private api: ApiService
@@ -19,4 +20,7 @@ export class DefaultLayoutFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  trackByFn(i, item){
+    return item.id
+  }
 }

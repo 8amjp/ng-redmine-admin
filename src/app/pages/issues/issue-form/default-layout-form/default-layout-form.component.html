@@ -9,7 +9,7 @@
 
     <div class="form-group">
       <label>トラッカー</label>
-      <ng-select formControlName="tracker_id" [items]="api.trackers" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <ng-select formControlName="tracker_id" [items]="projectEnums.trackers" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
     </div>
 
   </div>
@@ -17,7 +17,7 @@
 
     <div class="checkbox" id="issue_is_private_wrap">
       <input type="hidden" value="0" formControlName="is_private">
-      <input type="checkbox" value="1" formControlName="is_private" id="issue_is_private" disabled>
+      <input type="checkbox" value="1" formControlName="is_private" id="issue_is_private">
       <label class="inline" for="issue_is_private" id="issue_is_private_label">プライベート</label>
     </div>
 
@@ -49,17 +49,17 @@
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label>担当者</label>
-    <ng-select formControlName="assigned_to_id" [items]="api.issue_priorities" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+    <ng-select formControlName="assigned_to_id" [items]="projectEnums.memberships" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
     <label>カテゴリ</label>
-    <ng-select formControlName="category_id" [items]="api.issue_categories" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+    <ng-select formControlName="category_id" [items]="projectEnums.issue_categories" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-md-3">
     <label>対象バージョン</label>
-    <ng-select formControlName="fixed_version_id" [items]="api.versions" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+    <ng-select formControlName="fixed_version_id" [items]="projectEnums.versions" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
   </div>
 
   <div class="form-group col-md-3">
@@ -80,7 +80,7 @@
 <hr>
 
 <div formArrayName="custom_fields" class="row">
-  <div *ngFor="let cf of issueFormGroup.value.custom_fields; let i=index;" class="form-group col-md-3">
+  <div *ngFor="let cf of issueFormGroup.value.custom_fields; let i=index; trackBy: trackByFn" class="form-group col-md-3">
     <div [formGroupName]="i">
       <label>{{cf.name}}</label>
       <input type="text" formControlName="value" class="form-control">

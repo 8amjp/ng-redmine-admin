@@ -11,6 +11,7 @@ export class CustomLayoutFormComponent implements OnChanges {
 
   @Input() issueFormGroup: FormGroup;
   @Input() originalIssue: IssueResponse; // 修正前のチケットデータ
+  @Input() projectEnums;
 
   constructor(
     private api: ApiService

@@ -105,23 +105,7 @@ export class ApiService {
     );
   }
 
-  // TODO
-  /*
-  getEnums(project_id: number): any {
-    if (project_id) {
-      Observable.forkJoin(
-        this.get(`/projects/${project_id}/versions`)
-      ).subscribe(
-        response => {
-          this._versions = response[1].versions.map(this.forSelect2)
-        },
-        error => console.log(error),
-        () => {}
-      );
-    }
-  }
-  */
-
+  // 親子関係を持つデータを階層化する
   unflatten(items): {} {
     var map: any = [];
     var roots: any = [];

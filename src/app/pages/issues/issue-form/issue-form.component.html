@@ -30,10 +30,10 @@
 
       <div class="tab-content">
         <div class="tab-pane active" id="tab_default_layout">
-          <default-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue"></default-layout-form>
+          <default-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></default-layout-form>
         </div>
         <div class="tab-pane" id="tab_custom_layout">
-          <custom-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue"></custom-layout-form>
+          <custom-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></custom-layout-form>
         </div>
         <div class="tab-pane" id="tab_history">
           <issue-history [originalIssue]="originalIssue"></issue-history>
