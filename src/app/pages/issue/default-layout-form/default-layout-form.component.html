@@ -4,12 +4,16 @@
 
       <div class="form-group">
         <label>プロジェクト</label>
-        <ng-select formControlName="project_id" [items]="api.projects" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+        <select formControlName="project_id" class="form-control">
+          <option *ngFor="let item of api.projects" [value]="item.id">{{item.name}}</option>
+        </select>
       </div>
 
       <div class="form-group">
         <label>トラッカー</label>
-        <ng-select formControlName="tracker_id" [items]="projectEnums.trackers" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+        <select formControlName="tracker_id" class="form-control">
+          <option *ngFor="let item of projectEnums.trackers" [value]="item.id">{{item.name}}</option>
+        </select>
       </div>
 
     </div>
@@ -39,27 +43,37 @@
   <div class="row">
     <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
       <label>ステータス</label>
-      <ng-select formControlName="status_id" [items]="api.issue_statuses" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <select formControlName="status_id" class="form-control">
+        <option *ngFor="let item of api.issue_statuses" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
       <label>優先度</label>
-      <ng-select formControlName="priority_id" [items]="api.issue_priorities" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <select formControlName="priority_id" class="form-control">
+        <option *ngFor="let item of api.issue_priorities" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
       <label>担当者</label>
-      <ng-select formControlName="assigned_to_id" [items]="projectEnums.memberships" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <select formControlName="assigned_to_id" class="form-control">
+        <option *ngFor="let item of projectEnums.memberships" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
       <label>カテゴリ</label>
-      <ng-select formControlName="category_id" [items]="projectEnums.issue_categories" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <select formControlName="category_id" class="form-control">
+        <option *ngFor="let item of projectEnums.issue_categories" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <div class="form-group col-md-3">
       <label>対象バージョン</label>
-      <ng-select formControlName="fixed_version_id" [items]="projectEnums.versions" bindLabel="name" bindValue="id" [clearable]="false"></ng-select>
+      <select formControlName="fixed_version_id" class="form-control">
+        <option *ngFor="let item of projectEnums.versions" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <div class="form-group col-md-3">
