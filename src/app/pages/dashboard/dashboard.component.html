@@ -1,19 +1,20 @@
-<section class="content-header">
-  <h1>
-    ダッシュボード
-    <small *ngIf="project">
-      {{ project.name }}
-    </small>
-  </h1>
-</section>
-
-<section class="content">
-  <open-issues-widget [project_id]="project_id"></open-issues-widget>
-  <div class="row">
-    <div class="col-md-6">
+<main role="main" class="container-fluid">
+  <header class="pb-2 mb-3">
+    <h1 class="h2">
+      ダッシュボード
+      <small *ngIf="project">
+        {{ project.name }}
+      </small>
+    </h1>
+  </header>
+  <section>
+    <open-issues-widget [project_id]="project_id"></open-issues-widget>
+    <div class="row">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+        <new-issues-widget [project_id]="project_id"></new-issues-widget>
+      </div>
     </div>
-    <div class="col-md-6">
-      <new-issues-widget [project_id]="project_id"></new-issues-widget>
-    </div>
-  </div>
-</section>
+  </section>
+</main>

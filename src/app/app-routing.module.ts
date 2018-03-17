@@ -2,18 +2,9 @@ import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
-import { ActivityComponent } from './pages/activity/activity.component';
-import { IssuesComponent } from './pages/issues/issues.component';
-import { TimeEntriesComponent } from './pages/time-entries/time-entries.component';
-import { NewsComponent } from './pages/news/news.component';
-import { MyComponent } from './pages/my/my.component';
-import { LoginComponent } from './pages/login/login.component';
-import { IssueFormComponent } from './pages/issues/issue-form/issue-form.component';
-
-import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 import { IssuesModule } from './pages/issues/issues.module';
+import { IssueModule } from './pages/issue/issue.module';
 import { MyModule } from './pages/my/my.module';
 
 const routes: Routes = [{
@@ -31,6 +22,9 @@ const routes: Routes = [{
 }, {
   path: 'issues',
   loadChildren: ()=> IssuesModule
+}, {
+  path: 'issues/:id',
+  loadChildren: ()=> IssueModule
 }, {
   path: 'my',
   loadChildren: ()=> MyModule

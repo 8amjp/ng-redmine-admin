@@ -1,18 +1,19 @@
-<section class="content-header">
-  <h1>概要</h1>
-</section>
-
-<section class="content" *ngIf="project">
-  <div class="callout callout-info">
-    <h4>{{ project.name }}</h4>
-    <p>{{ project.description }}</p>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <issue-tracking [project]="project"></issue-tracking>
+<main role="main" class="container">
+  <header class="p-3">
+    <h1 class="h2">概要</h1>
+  </header>
+  <section *ngIf="project">
+    <div class="callout callout-info">
+      <h4>{{ project.name }}</h4>
+      <p>{{ project.description }}</p>
     </div>
-    <div class="col-md-6">
+
+    <div class="row">
+      <div class="col-md-6">
+        <issue-tracking [project]="project"></issue-tracking>
+      </div>
+      <div class="col-md-6">
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>

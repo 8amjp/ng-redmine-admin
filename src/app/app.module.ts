@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
-
-import { MainHeaderModule } from './components/main-header/main-header.module';
+import { NavbarModule } from './components/navbar/navbar.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
-import { ControlSidebarModule } from './components/control-sidebar/control-sidebar.module';
-
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ProjectsModule } from './pages/projects/projects.module';
 import { IssuesModule } from './pages/issues/issues.module';
+import { IssueModule } from './pages/issue/issue.module';
 import { MyModule } from './pages/my/my.module';
 
 import { AppComponent } from './app.component';
@@ -22,13 +21,14 @@ import { StyleService } from './services/style.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgbModule.forRoot(),
     AppRoutingModule,
-    MainHeaderModule,
+    NavbarModule,
     SidebarModule,
-    ControlSidebarModule,
     DashboardModule,
     ProjectsModule,
     IssuesModule,
+    IssueModule,
     MyModule,
   ],
   declarations: [

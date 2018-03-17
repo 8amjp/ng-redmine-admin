@@ -6,7 +6,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class MyComponent implements OnInit {
 
-  title = 'マイページ';
   issuesassignedtome;
   issuesreportedbyme;
 

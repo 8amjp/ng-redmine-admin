@@ -9,8 +9,8 @@ import { OpenIssuesWidgetComponent } from './open-issues-widget/open-issues-widg
 import { NewIssuesWidgetComponent } from './new-issues-widget/new-issues-widget.component';
 import { DueIssuesWidgetComponent } from './due-issues-widget/due-issues-widget.component';
 
-import { SmallBoxComponent } from '../../components/small-box/small-box.component';
-import { InfoBoxComponent } from '../../components/info-box/info-box.component';
+import { SquareWidgetComponent } from '../../widgets/square-widget/square-widget.component';
+import { IconWidgetComponent } from '../../widgets/icon-widget/icon-widget.component';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { InfoBoxComponent } from '../../components/info-box/info-box.component';
     OpenIssuesWidgetComponent,
     NewIssuesWidgetComponent,
     DueIssuesWidgetComponent,
-    SmallBoxComponent,
-    InfoBoxComponent,
+    SquareWidgetComponent,
+    IconWidgetComponent,
   ]
 })
 export class DashboardModule { }

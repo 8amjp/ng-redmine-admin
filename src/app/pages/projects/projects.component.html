@@ -1,12 +1,14 @@
-<section class="content-header">
-  <h1>{{ title }}</h1>
-</section>
-<section class="content">
-  <ul class="list-unstyled">
-    <ng-container *ngFor="let project of projects">
-    <li>
-      <project-box [project]="project"></project-box>
-    </li>
-    </ng-container>
-  </ul>
-</section>
+<main role="main" class="container-fluid">
+  <header class="p-3">
+    <h1 class="h2">プロジェクト</h1>
+  </header>
+  <section class="row">
+    <ul class="list-unstyled">
+      <ng-container *ngFor="let project of projects">
+      <li>
+        <project-box [project]="project"></project-box>
+      </li>
+      </ng-container>
+    </ul>
+  </section>
+</main>

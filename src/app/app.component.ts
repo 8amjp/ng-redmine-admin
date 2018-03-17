@@ -1,5 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { environment } from '../environments/environment';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,16 +6,9 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent implements OnInit {
 
-  private _layout: string = environment['layout'] || 'skin-blue sidebar-mini';
-
-  constructor( private renderer: Renderer2 ) { }
+  constructor() { }
 
   ngOnInit() {
-    let layout = this._layout.split(' ');
-    layout.forEach(function (className) {
-      this.renderer.addClass(document.body, className);
-    }.bind(this));
-
   }
 
 }

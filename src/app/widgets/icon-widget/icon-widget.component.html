@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body" *ngIf="number != null; else loading">
+    <span [ngClass]="bg"><i [ngClass]="icon"></i></span>
+    <p class="card-text">{{ text }}</p>
+    <h5 class="card-title">{{ number }}</h5>
+    <div class="progress" *ngIf="progress">
+      <div class="progress-bar" [ngStyle]="{'width': progress}"></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="overlay">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</ng-template>

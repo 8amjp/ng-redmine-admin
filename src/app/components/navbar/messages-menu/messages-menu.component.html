@@ -1,0 +1,26 @@
+<div ngbDropdown class="d-inline-block">
+  <a id="messages" ngbDropdownToggle>
+    <i class="fa fa-envelope-o"></i>
+    <span class="label label-success" *ngIf="messages">{{ messages.total_count }}</span>
+  </a>
+  <ul ngbDropdownMenu aria-labelledby="messages">
+    <li class="header">{{ header }} ({{ messages.total_count }})</li>
+    <li>
+      <ul class="menu" *ngIf="messages">
+        <li *ngFor="let issue of messages.issues">
+          <a [routerLink]="['/issues', issue.id]">
+            <div class="pull-left">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <h4>
+              Support Team
+              <small><i class="fa fa-clock-o"></i> 5 mins</small>
+            </h4>
+            <p>Why not buy a new awesome theme?</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="footer"><a href="#">See All Messages</a></li>
+  </ul>
+</div>

@@ -9,7 +9,6 @@ export class ApiService {
 
   private protocol: string   = environment['redmine_protocol']   || 'http';
   private host_name: string  = environment['redmine_host_name']  || 'localhost/redmine';
-  private api_format: string = environment['redmine_api_format'] || '.json';
   private api_key: string    = environment['redmine_api_key']    || '';
 
   // enumerations
@@ -19,6 +18,7 @@ export class ApiService {
   private _issue_priorities: any[] = [];
   private _custom_fields: any[] = [];
 
+  private api_format: string = '.json';
   private headers: HttpHeaders;
 
   constructor(private http: HttpClient) {

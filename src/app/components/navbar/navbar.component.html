@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <a [routerLink]="['/']" class="navbar-brand col-sm-3 col-md-2 mr-0">
+    <i class="fa fa-sticky-note-o"></i>
+    NgRedmineAdmin
+  </a>
+
+  <button class="navbar-toggler" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+    [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a [routerLink]="['/dashboard']" class="nav-link">
+          <i class="fa fa-dashboard"></i>
+          <span>ダッシュボード</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/my']" class="nav-link">
+          <i class="fa fa-user"></i>
+          <span>マイページ</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/projects']" class="nav-link">
+          <i class="fa fa-users"></i>
+          <span>プロジェクト</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/issues']" class="nav-link">
+          <i class="fa fa-tasks"></i>
+          <span>チケット</span>
+        </a>
+      </li>
+      <!--
+      <li messages-menu class="nav-item dropdown"></li>
+      <li notifications-menu class="nav-item dropdown"></li>
+      <li tasks-menu class="nav-item dropdown"></li>
+      <li user-menu class="nav-item dropdown">
+      -->
+    </ul>
+  </div>
+</nav>

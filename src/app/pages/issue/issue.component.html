@@ -1,0 +1,62 @@
+<main role="main" class="container-fluid">
+  <header class="p-3">
+    <h1 class="h2">チケット</h1>
+  </header>
+  <section>
+    <form [formGroup]="issueFormGroup" (ngSubmit)="onSubmit()">
+
+      <div class="text-right">
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a (click)="onReset()">Reset</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <ngb-tabset>
+        <ngb-tab title="フォーム">
+          <ng-template ngbTabContent>
+            <default-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></default-layout-form>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="カスタムフォーム">
+          <ng-template ngbTabContent>
+            <custom-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></custom-layout-form>
+          </ng-template>
+        </ngb-tab>
+        <!--
+        <ngb-tab title="tracker1">
+          <ng-template ngbTabContent>
+            <tracker1-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker1-layout-form>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="tracker2">
+          <ng-template ngbTabContent>
+            <tracker2-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker2-layout-form>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="tracker3">
+          <ng-template ngbTabContent>
+            <tracker3-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker3-layout-form>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="tracker4">
+          <ng-template ngbTabContent>
+            <tracker4-layout-form [issueFormGroup]="issueFormGroup" [originalIssue]="originalIssue" [projectEnums]="projectEnums"></tracker4-layout-form>
+          </ng-template>
+        </ngb-tab>
+        -->
+        <ngb-tab title="履歴">
+          <ng-template ngbTabContent>
+            <issue-history [originalIssue]="originalIssue"></issue-history>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </form>
+  </section>
+</main>

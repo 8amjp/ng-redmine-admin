@@ -6,7 +6,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  title = 'プロジェクト';
   projects: {};
 
   constructor(

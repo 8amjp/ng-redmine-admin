@@ -1,35 +1,33 @@
-<section class="content-header">
-  <h1>{{ title }}</h1>
-</section>
-<section class="content">
-  <div class="row">
+<main role="main" class="container-fluid">
+  <header class="pb-2 mb-3">
+    <h1 class="h2">マイページ</h1>
+  </header>
+  <section class="row">
     <div class="col-md-6">
-
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">
-            担当しているチケット
-            <span class="label label-danger" *ngIf="issuesassignedtome">{{ issuesassignedtome.total_count }}</span>
-          </h3>
+      <div class="card border-primary">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          担当しているチケット
+          <span class="badge badge-danger badge-pill" *ngIf="issuesassignedtome">
+            {{ issuesassignedtome.total_count }}
+          </span>
         </div>
-        <app-my-issues [issues]="issuesassignedtome"></app-my-issues>
+        <div class="card-body p-1">
+          <app-my-issues [issues]="issuesassignedtome"></app-my-issues>
+        </div>
       </div>
-
     </div>
-
     <div class="col-md-6">
-
-
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">
-            報告したチケット
-            <span class="label label-primary" *ngIf="issuesreportedbyme">{{ issuesreportedbyme.total_count }}</span>
-          </h3>
+      <div class="card border-primary">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          報告したチケット
+          <span class="badge badge-primary badge-pill" *ngIf="issuesreportedbyme">
+            {{ issuesreportedbyme.total_count }}
+          </span>
         </div>
-        <app-my-issues [issues]="issuesreportedbyme"></app-my-issues>
+        <div class="card-body p-1">
+          <app-my-issues [issues]="issuesreportedbyme"></app-my-issues>
+        </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
+</main>
