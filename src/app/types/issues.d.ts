@@ -60,7 +60,7 @@ export interface IssueParameters {
   custom_fields?: CustomFieldObject[];
   watcher_user_ids?: number[];
   notes?: string;
-  private_notes?: string;
+  private_notes?: number;
 }
 
 // Objects

@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IssuesRoutingModule } from './issues-routing.module';
 import { IssuesComponent } from './issues.component';
 import { IssuesFilterComponent } from './issues-filter/issues-filter.component';
+import { IssuesTableComponent } from './issues-table/issues-table.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { IssuesFilterComponent } from './issues-filter/issues-filter.component';
   declarations: [
     IssuesComponent,
     IssuesFilterComponent,
+    IssuesTableComponent,
   ]
 })
 export class IssuesModule { }

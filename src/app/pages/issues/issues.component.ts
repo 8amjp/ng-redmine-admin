@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { ApiService } from '../../services/api.service';
-import { StyleService } from '../../services/style.service';
 import { ProjectResponse } from '../../types/projects.d';
 
 @Component({
@@ -15,11 +14,11 @@ export class IssuesComponent implements OnInit {
   issues;
   project: ProjectResponse;
   filterFormGroup: FormGroup;
+  isFilterCollapsed: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
-    private style: StyleService,
     private fb: FormBuilder
   ) {
     this.filterFormGroup = fb.group({

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { environment } from '../../environments/environment';
+import { IssueResponse, IssueParameters } from '../types/issues.d';
 
 @Injectable()
 export class ApiService {

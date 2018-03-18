@@ -15,13 +15,15 @@ export class IssueComponent implements OnInit, AfterViewInit {
     issueFormGroup: FormGroup;
     originalIssue: IssueResponse; // 修正前のチケットデータ
     id: number;
+    successMessage: string = null;
+    errorMessage: string = null;
     projectEnums = {
-      trackers: {},
-      issue_categories: {},
-      enabled_modules: {},
-      time_entry_activities: {},
-      memberships: {},
-      versions: {}
+      trackers: [],
+      issue_categories: [],
+      enabled_modules: [],
+      time_entry_activities: [],
+      memberships: [],
+      versions: []
     }
 
     constructor(
@@ -53,7 +55,7 @@ export class IssueComponent implements OnInit, AfterViewInit {
         custom_fields: fb.array([]),
         watcher_user_ids: fb.array([]),
         notes: [''],
-        private_notes: ['']
+        private_notes: [null]
       });
     }
 
@@ -63,30 +65,30 @@ export class IssueComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
       this.cd.detectChanges();
-      /*
-      this.issueFormGroup.valueChanges.subscribe(
-        (form: any) => {
-          console.log('valueChanges', form);
-        }
-      );
-      */
     }
 
     onSubmit() {
-      let data = { issue: this.issueFormGroup.value };
-  //    let data = { issue: {custom_fields: this.issueFormGroup.value.custom_fields} };
-      console.log(data);
-      this.api.put(`/issues/${this.id}`, data).subscribe(
+      let data: IssueParameters = this.issueFormGroup.value;
+      console.log(data)
+      this.api.put(`/issues/${this.id}`, { issue: data }).subscribe(
         response => {
-          console.log(response);
+          this.successMessage = '更新しました。';
           this.getIssue();
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 5000);
         },
-        error => console.log(error),
-        () => {}
+        error => {
+          this.errorMessage = '更新できませんでした。';
+          setTimeout(() => {
+            this.errorMessage = null;
+          }, 5000);
+        }
       );
     }
 
     onReset() {
+      this.patchIssue();
     }
 
     getProjectEnums(project_id: number): any {
@@ -109,7 +111,7 @@ export class IssueComponent implements OnInit, AfterViewInit {
     }
 
     getIssue(): void {
-      this.api.get(`/issues/${this.id}`, ['include=journals']).subscribe(
+      this.api.get(`/issues/${this.id}`, 'include=journals').subscribe(
         response => {
           this.originalIssue = response.issue;
         },
@@ -140,7 +142,9 @@ export class IssueComponent implements OnInit, AfterViewInit {
         done_ratio: _issue.done_ratio || null,
         is_private: _issue.is_private || 0,
         estimated_hours: _issue.estimated_hours || null,
-        spent_hours: _issue.spent_hours || null
+        spent_hours: _issue.spent_hours || null,
+        notes: '',
+        private_notes: 0
       });
       if(_issue.custom_fields) {
         let custom_fields = this.fb.array([]);

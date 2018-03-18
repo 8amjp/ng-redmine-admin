@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'issue-history',
@@ -6,11 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IssueHistoryComponent implements OnInit {
 
-  @Input() originalIssue;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() journals;
 
 }

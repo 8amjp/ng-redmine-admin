@@ -5,16 +5,17 @@
   <section>
     <form [formGroup]="issueFormGroup" (ngSubmit)="onSubmit()">
 
-      <div class="text-right">
-        <div class="btn-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li><a (click)="onReset()">Reset</a></li>
-          </ul>
+      <div class="row p-1">
+        <div class="col-11">
+          <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">
+            {{ successMessage }}
+          </ngb-alert>
+          <ngb-alert *ngIf="errorMessage" type="danger" (close)="errorMessage = null">
+            {{ errorMessage }}
+          </ngb-alert>
+        </div>
+        <div class="col-1">
+          <button type="submit" class="btn btn-outline-primary">送信</button>
         </div>
       </div>
 
@@ -53,7 +54,7 @@
         -->
         <ngb-tab title="履歴">
           <ng-template ngbTabContent>
-            <issue-history [originalIssue]="originalIssue"></issue-history>
+            <issue-history [journals]="originalIssue.journals"></issue-history>
           </ng-template>
         </ngb-tab>
       </ngb-tabset>

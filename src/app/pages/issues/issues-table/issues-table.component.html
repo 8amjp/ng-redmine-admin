@@ -1,0 +1,42 @@
+<ng-container *ngIf="issues; else loading">
+  <table *ngIf="issues.issues.length > 0; else empty" class="table table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>トラッカー</th>
+        <th>ステータス</th>
+        <th>優先度</th>
+        <th>題名</th>
+        <th>担当者</th>
+        <th>更新日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let issue of issues.issues">
+        <td><a [routerLink]="['/issues', issue.id]">{{issue.id}}</a></td>
+        <td>{{issue.tracker?.name}}</td>
+        <td>
+          <span class="label" [ngClass]="style.status[issue.status.id]['label'] || 'default'">
+            {{issue.status?.name}}
+          </span>
+        </td>
+        <td>{{issue.priority?.name}}</td>
+        <td><a [routerLink]="['/issues', issue.id]">{{issue.subject}}</a></td>
+        <td>{{issue.assigned_to?.name}}</td>
+        <td>{{issue.updated_on | date:"yyyy/MM/dd"}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #loading>
+  <div class="overlay">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</ng-template>
+
+<ng-template #empty>
+  <div class="alert alert-light" role="alert">
+    <p>表示するデータがありません</p>
+  </div>
+</ng-template>

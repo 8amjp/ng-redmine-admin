@@ -1,21 +1,18 @@
-<div class="p-3" *ngIf="originalIssue">
-  <ul class="timeline" *ngIf="originalIssue.journals; else empty">
-    <li *ngFor="let journal of originalIssue.journals">
-      <i class="fa fa-edit bg-blue"></i>
-      <div class="timeline-item">
-        <span class="time"><i class="fa fa-clock-o"></i>{{journal.created_on | date:'medium' }}</span>
-        <h3 class="timeline-header">
-          <a href="#">#{{journal.id}}</a> {{journal.user.name}}
-        </h3>
-        <div class="timeline-body" *ngIf="journal.details">
-          <p *ngFor="let detail of journal.details">
-            {{detail.name}} を {{detail.old_value}} から {{detail.new_value}} に変更
-          </p>
-          <p *ngIf="journal.notes">{{journal.notes}}</p>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div class="card">
+  <div class="card-body">
+    <ng-container *ngIf="journals; else empty">
+      <ng-container *ngFor="let journal of journals">
+        <h5 class="card-title">
+          #{{journal.id}} {{journal.user.name}}
+          <span><i class="fa fa-clock-o"></i>{{journal.created_on | date:'medium' }}</span>
+        </h5>
+        <p *ngFor="let detail of journal.details" class="card-text">
+          {{detail.name}} を {{detail.old_value}} から {{detail.new_value}} に変更
+        </p>
+        <p *ngIf="journal.notes" class="card-text">{{journal.notes}}</p>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
 
 <ng-template #empty>

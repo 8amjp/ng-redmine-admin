@@ -19,10 +19,10 @@
     </div>
     <div class="col-md-3">
 
-      <div class="checkbox" id="issue_is_private_wrap">
+      <div class="checkbox">
         <input type="hidden" value="0" formControlName="is_private">
-        <input type="checkbox" value="1" formControlName="is_private" id="issue_is_private">
-        <label class="inline" for="issue_is_private" id="issue_is_private_label">プライベート</label>
+        <input type="checkbox" value="1" formControlName="is_private">
+        <label class="inline">プライベート</label>
       </div>
 
     </div>
@@ -30,12 +30,12 @@
 
   <div class="form-group">
     <label>題名</label>
-    <input type="text" formControlName="subject" id="issue_subject" class="form-control">
+    <input type="text" formControlName="subject" class="form-control">
   </div>
 
   <div class="form-group">
     <label>説明</label>
-    <textarea formControlName="description" id="issue_description" class="form-control"></textarea>
+    <textarea formControlName="description" class="form-control"></textarea>
   </div>
 
   <hr>
@@ -108,4 +108,17 @@
     <label>ファイル</label>
     <input type="file" name="attachments[dummy][file]" class="file_selector filedrop" multiple="multiple">
   </div>
+
+  <hr>
+
+  <div class="form-group">
+    <label>注記</label>
+    <textarea formControlName="notes" class="form-control"></textarea>
+  </div>
+  <div class="checkbox">
+    <input type="hidden" value="0" formControlName="private_notes">
+    <input type="checkbox" value="1" formControlName="private_notes">
+    <label class="inline">プライベート注記</label>
+  </div>
+
 </div>
