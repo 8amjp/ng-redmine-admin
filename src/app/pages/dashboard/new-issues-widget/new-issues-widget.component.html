@@ -1,5 +1,5 @@
 <section class="p-1">
-  <h5>新着チケット</h5>
+  <h5>今日登録されたチケット</h5>
   <ng-container *ngIf="data; else loading">
     <div class="row">
       <div *ngFor="let item of data" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
@@ -20,10 +20,17 @@
           {{ item.number }}
         </span>
       </div>
-      <div class="card-body" *ngIf="item.number">
-        <div *ngFor="let issue of item.issues">
-          {{ issue.subject }}
-        </div>
+      <div class="card-body p-1" *ngIf="item.number">
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let issue of item.issues" class="list-group-item">
+            <span class="badge" [ngClass]="'badge-'+style.status[issue.status?.id]['context']">
+              {{issue.status?.name}}
+            </span>
+            <a [routerLink]="['/issues', issue.id]">
+              [{{issue.tracker?.name}} #{{issue.id}}] {{issue.subject}}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </ng-container>

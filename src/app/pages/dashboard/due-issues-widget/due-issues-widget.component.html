@@ -1,3 +1,36 @@
-<p>
-  due-issues-widget works!
-</p>
+<section class="p-1">
+  <h5>今日が期限のチケット</h5>
+  <ng-container *ngIf="item; else loading">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        <square-widget
+          [context]="item.context"
+          [icon]="item.icon"
+          [(number)]="item.number"
+          [text]="item.text">
+        </square-widget>
+      </div>
+    </div>
+
+    <div class="card my-1" [ngClass]="'border-'+item.context">
+      <div class="card-body p-1" *ngIf="item.issues">
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let issue of item.issues" class="list-group-item">
+            <span class="badge" [ngClass]="'badge-'+style.status[issue.status?.id]['context']">
+              {{issue.status?.name}}
+            </span>
+            <a [routerLink]="['/issues', issue.id]">
+              [{{issue.tracker?.name}} #{{issue.id}}] {{issue.subject}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+</section>
+
+<ng-template #loading>
+  <div class="overlay">
+    <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</ng-template>

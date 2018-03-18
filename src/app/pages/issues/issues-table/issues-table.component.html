@@ -16,7 +16,7 @@
         <td><a [routerLink]="['/issues', issue.id]">{{issue.id}}</a></td>
         <td>{{issue.tracker?.name}}</td>
         <td>
-          <span class="label" [ngClass]="style.status[issue.status.id]['label'] || 'default'">
+          <span class="badge" [ngClass]="'badge-'+style.status[issue.status.id]['context']">
             {{issue.status?.name}}
           </span>
         </td>

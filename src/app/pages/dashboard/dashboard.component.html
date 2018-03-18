@@ -9,8 +9,10 @@
   </header>
   <section>
     <open-issues-widget [project_id]="project_id"></open-issues-widget>
+    <hr>
     <div class="row">
       <div class="col-md-6">
+        <due-issues-widget [project_id]="project_id"></due-issues-widget>
       </div>
       <div class="col-md-6">
         <new-issues-widget [project_id]="project_id"></new-issues-widget>

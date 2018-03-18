@@ -69,7 +69,6 @@ export class IssueComponent implements OnInit, AfterViewInit {
 
     onSubmit() {
       let data: IssueParameters = this.issueFormGroup.value;
-      console.log(data)
       this.api.put(`/issues/${this.id}`, { issue: data }).subscribe(
         response => {
           this.successMessage = '更新しました。';
