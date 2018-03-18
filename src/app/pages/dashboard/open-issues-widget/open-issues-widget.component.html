@@ -1,10 +1,10 @@
 <div class="row" *ngIf="data">
   <div *ngFor="let item of data" class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
     <icon-widget
-      [bg]="item.bg"
+      [context]="item.context"
       [icon]="item.icon"
-      [text]="item.text"
       [(number)]="item.number"
+      [text]="item.text"
       [(progress)]="item.progress">
     </icon-widget>
   </div>

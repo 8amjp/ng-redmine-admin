@@ -26,15 +26,13 @@ export class NewIssuesWidgetComponent implements OnInit {
         this.items = response.trackers;
         this.items.forEach(function(item) {
           item.param = { tracker_id: item.id };
-          let widgetStyle = this.style.tracker[item.id] || this.style.primary;
+          let style = this.style.tracker[item.id] || this.style.default;
           this.data.push({
-            bg: widgetStyle['bg'],
+            context: style.context,
+            icon: style.icon,
             number: 0,
-            icon: widgetStyle['icon'],
             text: item.name,
             link: ['/'],
-            footer: '一覧',
-            boxBg: widgetStyle['box'],
             issues: []
           });
         }.bind(this));

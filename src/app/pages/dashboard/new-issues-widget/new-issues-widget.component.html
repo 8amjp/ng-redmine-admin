@@ -1,35 +1,33 @@
-<div class="box box-default">
-  <div class="box-header with-border">
-    <h3 class="box-title">新着チケット</h3>
-  </div>
-  <div class="box-body" *ngIf="data; else loading">
+<section class="p-1">
+  <h5>新着チケット</h5>
+  <ng-container *ngIf="data; else loading">
     <div class="row">
       <div *ngFor="let item of data" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
         <square-widget
-          [bg]="item.bg"
+          [context]="item.context"
+          [icon]="item.icon"
           [(number)]="item.number"
           [text]="item.text"
-          [icon]="item.icon"
           [link]="item.link">
         </square-widget>
       </div>
     </div>
 
-    <div *ngFor="let item of data" class="box" [ngClass]="item.boxBg">
-      <div class="box-header with-border">
-        <h3 class="box-title">{{ item.text }}</h3>
-        <div class="box-tools pull-right">
-          <span class="label label-primary">{{ item.number }}</span>
-        </div>
+    <div *ngFor="let item of data" class="card my-1" [ngClass]="'border-'+item.context">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        {{ item.text }}
+        <span class="badge badge-pill" [ngClass]="'badge-'+item.context">
+          {{ item.number }}
+        </span>
       </div>
-      <div class="box-body" *ngIf="item.number">
+      <div class="card-body" *ngIf="item.number">
         <div *ngFor="let issue of item.issues">
           {{ issue.subject }}
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </ng-container>
+</section>
 
 <ng-template #loading>
   <div class="overlay">

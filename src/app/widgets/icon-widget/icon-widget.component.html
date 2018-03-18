@@ -1,11 +1,10 @@
-<div class="card">
-  <div class="card-body" *ngIf="number != null; else loading">
-    <span [ngClass]="bg"><i [ngClass]="icon"></i></span>
+<div class="card d-flex flex-row">
+  <div class="display-4 text-white p-3" [ngClass]="cardstyle">
+    <i [ngClass]="icon"></i>
+  </div>
+  <div class="card-body p-3" *ngIf="number != null; else loading">
+    <h5 class="card-title h3">{{ number }}</h5>
     <p class="card-text">{{ text }}</p>
-    <h5 class="card-title">{{ number }}</h5>
-    <div class="progress" *ngIf="progress">
-      <div class="progress-bar" [ngStyle]="{'width': progress}"></div>
-    </div>
   </div>
 </div>
 

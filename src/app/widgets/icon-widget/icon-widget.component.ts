@@ -6,15 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IconWidgetComponent implements OnInit {
 
-  @Input() bg: string = 'bg-aqua';
+  @Input() context: string = 'info';
   @Input() icon: string = 'fa fa-info';
-  @Input() text: string;
   @Input() number: number;
+  @Input() text: string;
   @Input() progress: string = '100%';
+  @Input() link: any = ['/'];
+  cardstyle;
 
   constructor() { }
 
   ngOnInit() {
+    this.cardstyle = 'bg-' + this.context;
   }
 
 }

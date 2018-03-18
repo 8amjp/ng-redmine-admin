@@ -1,9 +1,9 @@
-<main role="main" class="container">
+<main role="main" class="container-fluid">
   <header class="p-3">
     <h1 class="h2">概要</h1>
   </header>
   <section *ngIf="project">
-    <div class="callout callout-info">
+    <div class="alert alert-light" role="alert">
       <h4>{{ project.name }}</h4>
       <p>{{ project.description }}</p>
     </div>

@@ -58,7 +58,7 @@
     <div class="form-group col-sm-6 col-md-3 col-lg-3 col-xl-3">
       <label>担当者</label>
       <select formControlName="assigned_to_id" class="form-control">
-        <option *ngFor="let item of projectEnums.memberships" [value]="item.id">{{item.name}}</option>
+        <option *ngFor="let item of projectEnums.memberships" [value]="item.user.id">{{item.user.name}}</option>
       </select>
     </div>
 

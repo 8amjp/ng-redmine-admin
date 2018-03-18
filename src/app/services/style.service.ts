@@ -6,14 +6,6 @@ export class StyleService {
 
   private env = environment['styles'] || null;
 
-  private _contexts = {
-    primary: { bg: 'bg-light-blue', callout: 'callout-primary', label: 'label-primary', modal: 'modal-primary', box: 'box-primary', progressbar: 'progress-bar-primary' },
-    success: { bg: 'bg-green', callout: 'callout-success', alert: 'alert-success', label: 'label-success', modal: 'modal-success', box: 'box-success', progressbar: 'progress-bar-success' },
-    info: { bg: 'bg-aqua', callout: 'callout-info', alert: 'alert-info', label: 'label-info', modal: 'modal-info', box: 'box-info', progressbar: 'progress-bar-info' },
-    warning: { bg: 'bg-yellow', callout: 'callout-warning', alert: 'alert-warning', label: 'label-warning', modal: 'modal-warning', box: 'box-warning', progressbar: 'progress-bar-warning' },
-    danger: { bg: 'bg-red', callout: 'callout-danger', alert: 'alert-danger', label: 'label-danger', modal: 'modal-danger', box: 'box-danger', progressbar: 'progress-bar-danger' }
-  }
-
   private _styles = {
     tracker: {
       1: { context: 'danger', icon: 'fa fa-bug' }, // バグ
@@ -34,7 +26,8 @@ export class StyleService {
       3: { context: 'warning', icon: 'fa fa-exclamation-triangle' }, // 高め
       4: { context: 'warning', icon: 'fa fa-exclamation-triangle' }, // 急いで
       5: { context: 'danger', icon: 'fa fa-exclamation-triangle' } // 今すぐ
-    }
+    },
+    default: { context: 'primary', icon: 'fa fa-info-circle' }
   }
 
   private defaultIcon = { icon: 'fa fa-circle-o' };
@@ -44,12 +37,6 @@ export class StyleService {
     if(this.env && this.env.hasOwnProperty('tracker')) this._styles.tracker = this.env['tracker'];
     if(this.env && this.env.hasOwnProperty('status')) this._styles.status = this.env['status'];
     if(this.env && this.env.hasOwnProperty('priority')) this._styles.priority = this.env['priority'];
-
-    Object.keys(this._styles).forEach(function (resource) {
-      Object.keys(this._styles[resource]).forEach(function (id) {
-        this._styles[resource][id] = Object.assign({}, this._styles[resource][id], this._contexts[this._styles[resource][id]['context']])
-      }.bind(this));
-    }.bind(this));
   }
 
   get tracker() {
@@ -61,21 +48,8 @@ export class StyleService {
   get priority() {
     return this._styles.priority;
   }
-
-  get danger() {
-    return Object.assign({}, this._contexts.danger, this.defaultIcon)
-  }
-  get warning() {
-    return Object.assign({}, this._contexts.warning, this.defaultIcon)
-  }
-  get info() {
-    return Object.assign({}, this._contexts.info, this.defaultIcon)
-  }
-  get primary() {
-    return Object.assign({}, this._contexts.primary, this.defaultIcon)
-  }
-  get success() {
-    return Object.assign({}, this._contexts.success, this.defaultIcon)
+  get default() {
+    return this._styles.default;
   }
 
 }

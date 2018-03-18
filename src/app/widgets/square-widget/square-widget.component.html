@@ -1,13 +1,7 @@
-<div class="card" [ngClass]="bg">
-  <div class="card-body">
-    <h5 class="card-title">{{ number }}</h5>
-    <p class="card-text">{{ text }}</p>
-    <div class="icon">
-      <i [ngClass]="icon"></i>
-    </div>
-    <a [routerLink]="link">
-      {{ footer }}
-      <i class="fa fa-arrow-circle-right"></i>
-    </a>
+<div class="card text-white" [ngClass]="cardstyle">
+  <div class="card-body p-2">
+    <div class="text-right"><i [ngClass]="icon"></i></div>
+    <h5 class="card-title display-4 p-1">{{ number }}</h5>
+    <p class="card-text p-1">{{ text }}</p>
   </div>
 </div>

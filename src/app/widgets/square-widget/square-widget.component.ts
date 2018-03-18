@@ -6,16 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SquareWidgetComponent implements OnInit {
 
-  @Input() bg: string = 'bg-aqua';
+  @Input() context: string = 'info';
+  @Input() icon: string = 'fa fa-info';
   @Input() number: number;
   @Input() text: string;
-  @Input() icon: string = 'fa fa-info';
+  @Input() progress: string = '100%';
   @Input() link: any = ['/'];
-  @Input() footer: string = 'More info';
+  cardstyle;
 
   constructor() { }
 
   ngOnInit() {
+    this.cardstyle = 'bg-' + this.context;
   }
 
 }

@@ -25,14 +25,13 @@ export class OpenIssuesWidgetComponent implements OnInit {
         this.items = response.trackers;
         this.items.forEach(function(item) {
           item.param = { tracker_id: item.id };
-          let widgetStyle = this.style.tracker[item.id] || this.style.primary;
+          let style = this.style.tracker[item.id] || this.style.default;
           this.data.push({
-            bg: widgetStyle['bg'],
-            icon: widgetStyle['icon'],
-            text: item.name,
+            context: style.context,
+            icon: style.icon,
             number: 0,
-            progress: '0%',
-            description: ''
+            text: item.name,
+            progress: '0%'
           });
         }.bind(this));
       },
