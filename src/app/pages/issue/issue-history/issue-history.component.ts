@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'issue-history',
   templateUrl: './issue-history.component.html'
 })
-export class IssueHistoryComponent implements OnInit {
+export class IssueHistoryComponent {
 
   @Input() journals;
 
