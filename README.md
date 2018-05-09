@@ -27,11 +27,11 @@ ng-redmine-admin
 
 ### 準備
 
-樹里「次に、必要なモジュールを追加しよう。ng-redmine-adminディレクトリで次のコマンドを実行する」
+樹里「次に、必要なモジュールを追加しよう。ng-redmine-adminディレクトリに移動し、次のコマンドを実行する」
 
 `npm install`
 
-絵子「いろいろダウンロードしだしたぞ。けっこう時間かかるもんだね……」  
+絵子「いろいろダウンロードしだしたぞ。けっこう時間かかるもんだね……」  
 樹里「それから、 `/src/environments/environment.ts` を環境に応じて編集する必要がある」
 
 * `redmine_protocol` と `redmine_host_name` の値にRedmineのプロトコル、URLを記述します。
