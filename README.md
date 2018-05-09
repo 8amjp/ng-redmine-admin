@@ -52,7 +52,7 @@ RewriteCond %{REQUEST_METHOD} OPTIONS
 RewriteRule ^(.*)$ $1 [R=200,L] 
 ```
 
-樹里「これをhttpd.confの末尾に追記すると、あらゆるドメインからのアクセスも受け付け、X-Redmine-API-Keyというリクエストヘッダーを許可し、さらにすべてのOPTIONSメソッドのリクエストに対しステータスコード200を返す」
+樹里「これをhttpd.confの末尾に追記すると、あらゆるドメインからのアクセスも受け付け、X-Redmine-API-Keyというリクエストヘッダーを許可し、さらにすべてのOPTIONSメソッドのリクエストに対しステータスコード200を返す」  
 絵子「ザル警備だね……」
 
 ### 起動
