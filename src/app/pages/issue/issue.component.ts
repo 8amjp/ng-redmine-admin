@@ -1,8 +1,7 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import { Observable, forkJoin } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 import { IssueResponse, IssueParameters } from '../../types/issues.d';
 
@@ -91,7 +90,7 @@ export class IssueComponent implements OnInit, AfterViewInit {
     }
 
     getProjectEnums(project_id: number): any {
-      Observable.forkJoin(
+      forkJoin(
         this.api.get(`/projects/${project_id}`, 'include=trackers,issue_categories,enabled_modules,time_entry_activities'),
         this.api.get(`/projects/${project_id}/memberships`, 'limit=100'),
         this.api.get(`/projects/${project_id}/versions`)

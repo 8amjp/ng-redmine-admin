@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 import { IssueRoutingModule } from './issue-routing.module';
 import { IssueComponent } from './issue.component';
@@ -22,7 +21,6 @@ import { CustomLayoutFormComponent } from './custom-layout-form/custom-layout-fo
     FormsModule,
     RouterModule,
     NgbModule,
-    NgSelectModule,
     IssueRoutingModule,
   ],
   declarations: [

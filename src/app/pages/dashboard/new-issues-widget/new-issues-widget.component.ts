@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { ApiService } from '../../../services/api.service';
 import { StyleService } from '../../../services/style.service';

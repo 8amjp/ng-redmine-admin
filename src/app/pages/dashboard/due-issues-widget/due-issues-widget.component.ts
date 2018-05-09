@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import { Observable, forkJoin } from 'rxjs';
 import * as moment from 'moment';
 import { ApiService } from '../../../services/api.service';
 import { StyleService } from '../../../services/style.service';
@@ -26,7 +25,7 @@ export class DueIssuesWidgetComponent implements OnInit {
 
   getData(): void {
     let today = moment().format('YYYY-MM-DD');
-    Observable.forkJoin([
+    forkJoin([
       this.api.get('/issues', Object.assign( {}, { due_date: today }, { project_id: this.project_id } )),
       this.api.get('/issues', Object.assign( {}, { status_id: '*', due_date: today }, { project_id: this.project_id }  ))
     ]).subscribe(

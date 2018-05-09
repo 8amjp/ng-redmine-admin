@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import { Observable, forkJoin } from 'rxjs';
 import { ApiService } from '../../../../services/api.service';
 import { StyleService } from '../../../../services/style.service';
 import { ProjectResponse } from '../../../../types/projects.d';
@@ -35,7 +34,7 @@ export class IssueTrackingComponent implements OnInit {
 
   getData(): void {
     this.items.forEach(function(item, i) {
-      Observable.forkJoin([
+      forkJoin([
         this.api.get('/issues', Object.assign( {}, { project_id: this.project.id }, item.param)),
         this.api.get('/issues', Object.assign( {}, { status_id: '*' }, { project_id: this.project.id }, item.param ))
       ]).subscribe(

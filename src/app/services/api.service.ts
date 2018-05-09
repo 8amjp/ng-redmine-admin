@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
+import { Observable, forkJoin } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IssueResponse, IssueParameters } from '../types/issues.d';
 
@@ -29,7 +28,7 @@ export class ApiService {
     });
 
     // get enumerations
-    Observable.forkJoin([
+    forkJoin([
       this.get('/projects', 'include=trackers,issue_categories,enabled_modules'),
       this.get('/trackers'),
       this.get('/issue_statuses'),
