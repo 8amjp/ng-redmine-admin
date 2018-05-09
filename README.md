@@ -1,8 +1,8 @@
 ng-redmine-admin
 ================
 
-篠宮樹里「絵子よ、[Angular](https://angular.io/) で [Redmine](https://www.redmine.org/) のフロントエンドアプリケーションを作ってみたぞ」  
-妹尾絵子「おー。おめでとー」
+篠宮樹里「絵子よ、[Angular](https://angular.io/) で [Redmine](https://www.redmine.org/) のフロントエンドアプリケーションを作ってみたぞ」  
+瀬尾絵子「おー。おめでとー」
 
 ## Description
 
@@ -41,6 +41,19 @@ ng-redmine-admin
 樹里「Redmine側でも準備がいる。管理画面で、『RESTによるWebサービスを有効にする』をオンにしよう。それから、CORS(オリジン間リソース共有)を使用した要求に応答させる設定が必要だ」  
 絵子「どうやったらいいの？」  
 樹里「方法はいろいろあるが、セキュリティ面に目をつぶれば、Redmineが稼働しているWebサーバーの設定ファイル(Apacheならhttpd.conf)を書き換えてしまうのが最も簡単だ」
+
+```
+Header always set Access-Control-Allow-Origin "*" 
+Header always set Access-Control-Allow-Methods "OPTIONS, PUT" 
+Header always set Access-Control-Max-Age "60" 
+Header always set Access-Control-Allow-Headers "Content-Type, X-Redmine-API-Key" 
+RewriteEngine On 
+RewriteCond %{REQUEST_METHOD} OPTIONS 
+RewriteRule ^(.*)$ $1 [R=200,L] 
+```
+
+樹里「これをhttpd.confの末尾に追記すると、あらゆるドメインからのアクセスも受け付け、X-Redmine-API-Keyというリクエストヘッダーを許可し、さらにすべてのOPTIONSメソッドのリクエストに対しステータスコード200を返す」
+絵子「ザル警備だね……」
 
 ### 起動
 
