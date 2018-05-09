@@ -30,7 +30,7 @@ ng-redmine-admin
 
 `npm install`
 
-絵子「けっこう時間がかかるね……」
+絵子「けっこう時間がかかるね……」  
 樹里「それから、 `/src/environments/environment.ts` を環境に応じて編集する必要がある」
 
 * `redmine_protocol` と `redmine_host_name` の値にRedmineのプロトコル、URLを記述します。
@@ -38,8 +38,8 @@ ng-redmine-admin
 
 ### Redmine側の準備
 
-樹里「Redmine側でも準備がいる。管理画面で、『RESTによるWebサービスを有効にする』をオンにしよう。それから、CORS(オリジン間リソース共有)を使用した要求に応答させる設定が必要だ」
-絵子「どうやったらいいの？」
+樹里「Redmine側でも準備がいる。管理画面で、『RESTによるWebサービスを有効にする』をオンにしよう。それから、CORS(オリジン間リソース共有)を使用した要求に応答させる設定が必要だ」  
+絵子「どうやったらいいの？」  
 樹里「方法はいろいろあるが、セキュリティ面に目をつぶれば、Redmineが稼働しているWebサーバーの設定ファイル(Apacheならhttpd.conf)を書き換えてしまうのが最も簡単だ」
 
 ### 起動
