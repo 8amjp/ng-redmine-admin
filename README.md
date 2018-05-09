@@ -10,11 +10,12 @@ ng-redmine-admin
 
 ### 環境構築
 
-樹里「[Node.js](https://nodejs.org/ja/) と [npm](https://www.npmjs.com/) 、
+絵子「さっそく使ってみよう！」
+樹里「まず、[Node.js](https://nodejs.org/ja/) と [npm](https://www.npmjs.com/) 、
 [Angular CLI](https://cli.angular.io/) がセットアップされていない人はさっさとセットアップするように」  
 絵子「はーい」
 
-* まず、Node.jsのインストーラーを実行したあとに、`npm install -g @angular/cli` とコマンドを入力してAngular CLIをインストールします。
+* まずNode.jsのインストーラーを実行したあとに、`npm install -g @angular/cli` とコマンドを入力してAngular CLIをインストールします。
 
 ### 設置
 
@@ -22,15 +23,15 @@ ng-redmine-admin
 
 `git clone https://github.com/8amjp/ng-redmine-admin.git`
 
-絵子「ZIPファイルをダウンロードして、解凍してもOKだよ」
+絵子「gitをインストールしていない人は、ZIPファイルをダウンロードして解凍してもOKだよ」
 
 ### 準備
 
-樹里「次に、必要なモジュールを追加しよう」
+樹里「次に、必要なモジュールを追加しよう。ng-redmine-adminディレクトリで次のコマンドを実行する」
 
 `npm install`
 
-絵子「けっこう時間がかかるね……」  
+絵子「いろいろダウンロードしだしたぞ。けっこう時間かかるもんだね……」  
 樹里「それから、 `/src/environments/environment.ts` を環境に応じて編集する必要がある」
 
 * `redmine_protocol` と `redmine_host_name` の値にRedmineのプロトコル、URLを記述します。
@@ -57,7 +58,7 @@ RewriteRule ^(.*)$ $1 [R=200,L]
 
 ### 起動
 
-絵子「できた！」  
+絵子「さて、準備できたよ」  
 樹里「では、さっそく起動しよう」
 
 `ng s`
