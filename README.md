@@ -1,7 +1,7 @@
 ng-redmine-admin
 ================
 
-篠宮樹里「絵子よ、[Angular](https://angular.io/) で [Redmine](https://www.redmine.org/) のフロントエンドアプリケーションを作ってみたぞ」  
+篠宮樹里「絵子よ、[Angular](https://angular.io/) で [Redmine](https://www.redmine.org/) のフロントエンドアプリケーションを作ってみたぞ」  
 瀬尾絵子「おー。おめでとー」
 
 ## Description
